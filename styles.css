@@ -1,22 +1,6 @@
 /* ================================================================
    dev.portfolio — Neovim UI · CSS puro (sin JavaScript)
    Esquema de colores: Rosé Pine Moon
-   
-   ESTRUCTURA DEL LAYOUT:
-   ┌─────────────────────────────────────┐
-   │          nvim-titlebar              │  <- barra del SO
-   ├─────────────────────────────────────┤
-   │          nvim-tabbar                │  <- tabline de buffers
-   ├──────────────┬──────────────────────┤
-   │              │                      │
-   │   neotree    │   editor-area        │  <- body
-   │  (sidebar)   │   (panels/buffers)   │
-   │              │                      │
-   ├─────────────────────────────────────┤
-   │          nvim-statusbar             │  <- statusline
-   └─────────────────────────────────────┘
-   ================================================================ */
-
 
 /* ── 1. VARIABLES GLOBALES (tokens de diseño) ─────────────────
    Rosé Pine Moon — rose-pine.com
@@ -27,83 +11,90 @@
    ──────────────────────────────────────────────────────────── */
 :root {
   /* Fondos */
-  --bg:           #232136;   /* base — fondo principal del editor  */
-  --bg-dark:      #1f1d2e;   /* más oscuro — titlebar / chrome     */
-  --bg-sidebar:   #2a273f;   /* surface — Neotree                  */
-  --bg-float:     #393552;   /* overlay — popups / terminales      */
-  --bg-hl:        #44415a;   /* highlight-med — cursorline         */
-  --bg-tab-off:   #1f1d2e;   /* tab inactiva                       */
-  --bg-tab-on:    #232136;   /* tab activa                         */
-  --bg-statusbar: #3e8fb0;   /* pine — statusbar                   */
-  --bg-mode:      #9ccfd8;   /* foam — sección del modo (NORMAL)   */
+  --bg: #232136; /* base — fondo principal del editor  */
+  --bg-dark: #1f1d2e; /* más oscuro — titlebar / chrome     */
+  --bg-sidebar: #2a273f; /* surface — Neotree                  */
+  --bg-float: #393552; /* overlay — popups / terminales      */
+  --bg-hl: #44415a; /* highlight-med — cursorline         */
+  --bg-tab-off: #1f1d2e; /* tab inactiva                       */
+  --bg-tab-on: #232136; /* tab activa                         */
+  --bg-statusbar: #3e8fb0; /* pine — statusbar                   */
+  --bg-mode: #9ccfd8; /* foam — sección del modo (NORMAL)   */
 
   /* Texto */
-  --fg:           #e0def4;   /* text — texto principal             */
-  --fg-dim:       #44415a;   /* highlight-med — line numbers       */
-  --fg-comment:   #6e6a86;   /* muted — comentarios                */
-  --fg-inactive:  #6e6a86;   /* muted — tabs inactivas             */
-  --fg-sidebar:   #908caa;   /* subtle — texto del sidebar         */
+  --fg: #e0def4; /* text — texto principal             */
+  --fg-dim: #44415a; /* highlight-med — line numbers       */
+  --fg-comment: #6e6a86; /* muted — comentarios                */
+  --fg-inactive: #6e6a86; /* muted — tabs inactivas             */
+  --fg-sidebar: #908caa; /* subtle — texto del sidebar         */
 
   /* Colores sintácticos */
-  --syn-kw:      #c4a7e7;    /* iris   — keywords: const, import   */
-  --syn-ty:      #9ccfd8;    /* foam   — tipos: Developer…         */
-  --syn-va:      #e0def4;    /* text   — variables                 */
-  --syn-pr:      #9ccfd8;    /* foam   — propiedades de objetos    */
-  --syn-st:      #f6c177;    /* gold   — strings                   */
-  --syn-nu:      #ea9a97;    /* rose   — numbers / booleans        */
-  --syn-op:      #908caa;    /* subtle — operadores: : =           */
-  --syn-pu:      #e0def4;    /* text   — puntuación: { } [ ] ; ,   */
-  --syn-cm:      #6e6a86;    /* muted  — comentarios // …          */
-  --syn-lk:      #9ccfd8;    /* foam   — links dentro del código   */
+  --syn-kw: #c4a7e7; /* iris   — keywords: const, import   */
+  --syn-ty: #9ccfd8; /* foam   — tipos: Developer…         */
+  --syn-va: #e0def4; /* text   — variables                 */
+  --syn-pr: #9ccfd8; /* foam   — propiedades de objetos    */
+  --syn-st: #f6c177; /* gold   — strings                   */
+  --syn-nu: #ea9a97; /* rose   — numbers / booleans        */
+  --syn-op: #908caa; /* subtle — operadores: : =           */
+  --syn-pu: #e0def4; /* text   — puntuación: { } [ ] ; ,   */
+  --syn-cm: #6e6a86; /* muted  — comentarios // …          */
+  --syn-lk: #9ccfd8; /* foam   — links dentro del código   */
 
   /* Terminal simulada */
-  --term-bg:     #1f1d2e;    /* más oscuro que base                */
-  --term-fg:     #e0def4;
-  --term-green:  #9ccfd8;    /* foam                               */
-  --term-blue:   #3e8fb0;    /* pine                               */
-  --term-dim:    #6e6a86;    /* muted                              */
-  --term-h:      280px;      /* alto de la terminal animada        */
+  --term-bg: #1f1d2e; /* más oscuro que base                */
+  --term-fg: #e0def4;
+  --term-green: #9ccfd8; /* foam                               */
+  --term-blue: #3e8fb0; /* pine                               */
+  --term-dim: #6e6a86; /* muted                              */
+  --term-h: 280px; /* alto de la terminal animada        */
 
   /* Bordes y decoración */
-  --border:      #393552;    /* overlay                            */
-  --tab-marker:  #eb6f92;    /* love — indicador rosa en tab activa */
-  --tree-active: #2a283e;    /* highlight-low                      */
-  --skill-track: #2a283e;    /* highlight-low                      */
-  --skill-fill:  #3e8fb0;    /* pine                               */
+  --border: #393552; /* overlay                            */
+  --tab-marker: #eb6f92; /* love — indicador rosa en tab activa */
+  --tree-active: #2a283e; /* highlight-low                      */
+  --skill-track: #2a283e; /* highlight-low                      */
+  --skill-fill: #3e8fb0; /* pine                               */
 
   /* Tipografía */
-  --font:        "JetBrains Mono", "Cascadia Code", "Fira Code", monospace;
-  --fs:          13.5px;
-  --lh:          1.65;
+  --font: "JetBrains Mono", "Cascadia Code", "Fira Code", monospace;
+  --fs: 13.5px;
+  --lh: 1.65;
 
   /* Alturas de chrome */
-  --titlebar-h:  27px;
-  --tabbar-h:    34px;
+  --titlebar-h: 27px;
+  --tabbar-h: 34px;
   --statusbar-h: 24px;
-  --sidebar-w:   210px;
-  --ln-w:        3.2rem;     /* ancho de la columna de line numbers */
+  --sidebar-w: 210px;
+  --ln-w: 3.2rem; /* ancho de la columna de line numbers */
 }
 
-
 /* ── 2. RESET MÍNIMO ──────────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-html, body {
+html,
+body {
   height: 100%;
   background: var(--bg-dark);
   color: var(--fg);
   font-family: var(--font);
   font-size: var(--fs);
   line-height: var(--lh);
-  overflow: hidden;    /* el scroll ocurre dentro de cada panel */
+  overflow: hidden; /* el scroll ocurre dentro de cada panel */
 }
 
 /* ── 3. RADIO INPUTS OCULTOS (mecanismo de tab switching) ────────
    Estos inputs son los "interruptores" que CSS usa para saber
    cuál pestaña/panel/archivo está activo, sin JavaScript.
    ────────────────────────────────────────────────────────────── */
-.tab-radio { display: none; }
-
+.tab-radio {
+  display: none;
+}
 
 /* ── 4. VENTANA DE NEOVIM — layout principal ─────────────────────
    Grid de 4 filas: titlebar / tabbar / body / statusbar
@@ -114,7 +105,6 @@ html, body {
   height: 100dvh;
   overflow: hidden;
 }
-
 
 /* ── 5. BARRA DE TÍTULO (chrome del sistema operativo) ──────────── */
 .nvim-titlebar {
@@ -128,7 +118,6 @@ html, body {
   border-bottom: 1px solid var(--border);
   user-select: none;
 }
-
 
 /* ── 6. TABLINE — barra de buffers abiertos ──────────────────────
    Cada <label> es una "pestaña" que apunta a un radio input.
@@ -144,36 +133,39 @@ html, body {
   user-select: none;
 }
 
-/* Tab individual — flex:1 para distribución equitativa */
+/* Tab individual — ancho natural como buffers reales de Neovim */
 .tab {
-  flex: 1;               /* todas las tabs toman el mismo espacio */
+  flex: 0 0 auto; /* ancho determinado por el contenido */
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 6px;
-  padding: 0 12px;
+  padding: 0 14px;
   cursor: pointer;
   color: var(--fg-inactive);
   background: var(--bg-tab-off);
   border-right: 1px solid var(--border);
   font-size: 12px;
   white-space: nowrap;
-  overflow: hidden;      /* evita desbordamiento en tabs pequeñas */
-  text-overflow: ellipsis;
   position: relative;
-  transition: color 0.12s, background 0.12s;
+  transition:
+    color 0.12s,
+    background 0.12s;
 }
 
 /* Indicador inferior (línea azul = buffer activo) */
 .tab::after {
   content: "";
   position: absolute;
-  bottom: 0; left: 0; right: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   height: 2px;
   background: transparent;
 }
 
-.tab:hover { color: var(--fg); }
+.tab:hover {
+  color: var(--fg);
+}
 
 /* Insignia de tipo de archivo */
 .tab-lang {
@@ -182,26 +174,30 @@ html, body {
   padding: 1px 4px;
   border-radius: 2px;
 }
-.tab-lang.ts   { color: #9ccfd8; }   /* foam  */
-.tab-lang.json { color: #f6c177; }   /* gold  */
+.tab-lang.ts {
+  color: #9ccfd8;
+} /* foam  */
+.tab-lang.json {
+  color: #f6c177;
+} /* gold  */
 
-/* Botón × de la pestaña */
+/* Botón × de la pestaña — love (rojo-rosa) como en Rose Pine */
 .tab-x {
-  color: var(--fg-dim);
+  color: #eb6f92; /* love */
   font-size: 13px;
-  opacity: 0.4;
+  opacity: 0.55;
   transition: opacity 0.12s;
 }
-.tab:hover .tab-x { opacity: 0.7; }
-
+.tab:hover .tab-x {
+  opacity: 1;
+}
 
 /* ── 7. BODY (Neotree + Editor) ──────────────────────────────────── */
 .nvim-body {
   display: flex;
   overflow: hidden;
-  min-height: 0;    /* necesario para que el overflow funcione en flex */
+  min-height: 0; /* necesario para que el overflow funcione en flex */
 }
-
 
 /* ── 8. NEOTREE SIDEBAR ───────────────────────────────────────────
    Imita el plugin nvim-neo-tree/neo-tree.nvim
@@ -222,7 +218,7 @@ html, body {
 
 /* Encabezado del panel Neotree */
 .neotree-header {
-  margin: 0;            /* reset del <h2> */
+  margin: 0; /* reset del <h2> */
   padding: 6px 10px 5px;
   font-size: 11px;
   font-weight: 600;
@@ -239,7 +235,7 @@ html, body {
   align-items: center;
   gap: 5px;
   padding: 2px 8px;
-  padding-left: calc(8px + var(--d, 0) * 14px);  /* indentación por nivel */
+  padding-left: calc(8px + var(--d, 0) * 14px); /* indentación por nivel */
   font-size: 12.5px;
 }
 
@@ -249,19 +245,21 @@ html, body {
   cursor: default;
 }
 
-/* Flecha del directorio */
-.tree-caret { font-size: 7px; color: var(--fg-comment); }
-.tree-caret.open { color: var(--fg-inactive); }
+.tree-caret.open {
+  color: var(--fg-inactive);
+}
 
 /* Fila de archivo (label = clickable) */
 .tree-file {
   color: var(--fg-sidebar);
   cursor: pointer;
-  transition: background 0.1s, color 0.1s;
+  transition:
+    background 0.1s,
+    color 0.1s;
   border-radius: 2px;
 }
 .tree-file:hover {
-  background: rgba(156, 207, 216, 0.07);  /* foam con baja opacidad */
+  background: rgba(156, 207, 216, 0.07); /* foam con baja opacidad */
   color: var(--fg);
 }
 
@@ -274,9 +272,23 @@ html, body {
   flex-shrink: 0;
   letter-spacing: 0;
 }
-.ficon.ts   { color: #9ccfd8; background: rgba(156,207,216,0.12); }  /* foam */
-.ficon.json { color: #f6c177; background: rgba(246,193,119,0.12); }  /* gold */
-
+.ficon.ts {
+  color: #9ccfd8;
+  background: rgba(156, 207, 216, 0.12);
+} /* foam  */
+.ficon.json {
+  color: #f6c177;
+  background: rgba(246, 193, 119, 0.12);
+} /* gold  */
+.ficon.dir {
+  font-size: 12px;
+  background: none;
+  padding: 0;
+} /* folder emoji */
+.tree-caret {
+  font-size: 7px;
+  color: var(--fg-comment);
+}
 
 /* ── 9. ÁREA DEL EDITOR ───────────────────────────────────────────
    Contiene todos los paneles. Solo el panel activo es visible
@@ -292,7 +304,7 @@ html, body {
 
 /* ── Panel base (buffer / archivo) ──────────────────────────────── */
 .panel {
-  display: none;         /* oculto por defecto                     */
+  display: none; /* oculto por defecto                     */
   height: 100%;
   flex-direction: column;
   overflow: hidden;
@@ -309,7 +321,6 @@ html, body {
   min-height: 0;
 }
 
-
 /* ── 10. CODE LINES — numeración con CSS counters ─────────────────
    Usa counter-increment para generar los números de línea sin
    necesitar números hardcodeados en el HTML.
@@ -317,7 +328,7 @@ html, body {
 .code-lines {
   list-style: none;
   counter-reset: line;
-  min-width: max-content;   /* evita que las líneas se rompan      */
+  min-width: max-content; /* evita que las líneas se rompan      */
 }
 
 .code-lines > li {
@@ -344,39 +355,75 @@ html, body {
 }
 
 /* Hover: resaltar línea (como cursorline) */
-.code-lines > li:hover { background: var(--bg-hl); }
-.code-lines > li.blank { min-height: calc(var(--lh) * 1em); }
+.code-lines > li:hover {
+  background: var(--bg-hl);
+}
+.code-lines > li.blank {
+  min-height: calc(var(--lh) * 1em);
+}
 
 /* Helpers de indentación (simulan espacios/tabs) */
-.c-in1 { display: inline-block; width: 2ch; }
-.c-in2 { display: inline-block; width: 4ch; }
-
+.c-in1 {
+  display: inline-block;
+  width: 2ch;
+}
+.c-in2 {
+  display: inline-block;
+  width: 4ch;
+}
 
 /* ── 11. TOKENS DE SINTAXIS ──────────────────────────────────────
    Cada clase corresponde a una categoría sintáctica del
    lenguaje. Usadas en span's dentro de los .code-lines.
    ────────────────────────────────────────────────────────────── */
-.c-kw { color: var(--syn-kw); }         /* keyword */
-.c-ty { color: var(--syn-ty); }         /* type    */
-.c-va { color: var(--syn-va); }         /* variable */
-.c-pr { color: var(--syn-pr); }         /* property */
-.c-st { color: var(--syn-st); }         /* string  */
-.c-nu { color: var(--syn-nu); }         /* number  */
-.c-bo { color: var(--syn-nu); }         /* boolean */
-.c-op { color: var(--syn-op); }         /* operator */
-.c-pu { color: var(--syn-pu); }         /* punctuation */
-.c-tx { color: var(--fg); }             /* texto plano */
-.c-comment { color: var(--syn-cm); font-style: italic; }
+.c-kw {
+  color: var(--syn-kw);
+} /* keyword */
+.c-ty {
+  color: var(--syn-ty);
+} /* type    */
+.c-va {
+  color: var(--syn-va);
+} /* variable */
+.c-pr {
+  color: var(--syn-pr);
+} /* property */
+.c-st {
+  color: var(--syn-st);
+} /* string  */
+.c-nu {
+  color: var(--syn-nu);
+} /* number  */
+.c-bo {
+  color: var(--syn-nu);
+} /* boolean */
+.c-op {
+  color: var(--syn-op);
+} /* operator */
+.c-pu {
+  color: var(--syn-pu);
+} /* punctuation */
+.c-tx {
+  color: var(--fg);
+} /* texto plano */
+.c-comment {
+  color: var(--syn-cm);
+  font-style: italic;
+}
 
 /* Links dentro del código (strings clicables) */
 .c-link {
   color: var(--syn-lk);
   text-decoration: none;
-  border-bottom: 1px solid rgba(125,207,255,0.25);
-  transition: border-color 0.12s, color 0.12s;
+  border-bottom: 1px solid rgba(125, 207, 255, 0.25);
+  transition:
+    border-color 0.12s,
+    color 0.12s;
 }
-.c-link:hover { color: #a9dcff; border-bottom-color: var(--syn-lk); }
-
+.c-link:hover {
+  color: #a9dcff;
+  border-bottom-color: var(--syn-lk);
+}
 
 /* ── 12. SKILL BARS ──────────────────────────────────────────────
    Barras de progreso inline que viven dentro de las code-lines.
@@ -410,7 +457,6 @@ html, body {
   background: linear-gradient(90deg, var(--skill-fill), #7aa2f7);
   border-radius: 99px;
 }
-
 
 /* ── 13. TERMINAL ANIMADA ─────────────────────────────────────────
    Simula el panel :terminal de Neovim. Se desliza hacia
@@ -447,7 +493,7 @@ html, body {
   display: flex;
   align-items: center;
   gap: 8px;
-  background: var(--bg-float);   /* overlay — surface del split  */
+  background: var(--bg-float); /* overlay — surface del split  */
   border-bottom: 1px solid var(--border);
   padding: 0 10px;
   height: 22px;
@@ -458,14 +504,16 @@ html, body {
 
 .term-mode {
   color: var(--bg-dark);
-  background: #f6c177;           /* gold                          */
+  background: #f6c177; /* gold                          */
   font-weight: 700;
   font-size: 10.5px;
   padding: 0 5px;
   border-radius: 2px;
 }
 
-.term-title { color: var(--fg-comment); }
+.term-title {
+  color: var(--fg-comment);
+}
 
 /* Cuerpo scrolleable de la terminal */
 .term-body {
@@ -486,20 +534,40 @@ html, body {
   display: flex;
   align-items: baseline;
   flex-wrap: nowrap;
-  opacity: 0;               /* invisible hasta que la animación la revele */
+  opacity: 0; /* invisible hasta que la animación la revele */
   line-height: 1.55;
 }
 
 /* Tokens del output de terminal */
-.t-prompt { color: var(--term-green); }
-.t-cmd    { color: var(--fg); }
-.t-ty     { color: var(--syn-ty); }
-.t-pr     { color: var(--syn-pr); }
-.t-st     { color: var(--syn-st); }
-.t-bo     { color: var(--syn-nu); }
-.t-pu     { color: var(--syn-pu); }
-.t-dim    { color: var(--term-dim); font-style: italic; }
-.t-in1    { display: inline-block; width: 2ch; }
+.t-prompt {
+  color: var(--term-green);
+}
+.t-cmd {
+  color: var(--fg);
+}
+.t-ty {
+  color: var(--syn-ty);
+}
+.t-pr {
+  color: var(--syn-pr);
+}
+.t-st {
+  color: var(--syn-st);
+}
+.t-bo {
+  color: var(--syn-nu);
+}
+.t-pu {
+  color: var(--syn-pu);
+}
+.t-dim {
+  color: var(--term-dim);
+  font-style: italic;
+}
+.t-in1 {
+  display: inline-block;
+  width: 2ch;
+}
 
 /* Cursor parpadeante al final de la terminal */
 .t-cursor {
@@ -508,29 +576,44 @@ html, body {
   animation: blink 1s step-start infinite;
 }
 
-
 /* ── 14. KEYFRAMES DE ANIMACIÓN ──────────────────────────────────
    Todas las animaciones del proyecto definidas aquí.
    ────────────────────────────────────────────────────────────── */
 
 /* Terminal se desliza hacia arriba */
 @keyframes term-open {
-  from { height: 0;              opacity: 0; }
-  to   { height: var(--term-h); opacity: 1; }
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: var(--term-h);
+    opacity: 1;
+  }
 }
 
 /* Línea de terminal aparece con un ligero desplazamiento */
 @keyframes line-appear {
-  from { opacity: 0; transform: translateY(3px); }
-  to   { opacity: 1; transform: translateY(0);   }
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Cursor parpadeante */
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
-
 
 /* ── 15. STATUS BAR ──────────────────────────────────────────────
    Imita lualine.nvim con secciones izquierda / centro / derecha.
@@ -547,7 +630,8 @@ html, body {
   overflow: hidden;
 }
 
-.sb-left, .sb-right {
+.sb-left,
+.sb-right {
   display: flex;
   align-items: center;
   flex-shrink: 0;
@@ -559,7 +643,7 @@ html, body {
   align-items: center;
   justify-content: center;
   font-size: 11px;
-  color: rgba(255,255,255,0.8);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 /* Bloque de modo (NORMAL) */
@@ -581,29 +665,35 @@ html, body {
   height: 100%;
   display: flex;
   align-items: center;
-  background: rgba(0,0,0,0.18);
+  background: rgba(0, 0, 0, 0.18);
   font-size: 11px;
   gap: 4px;
 }
 
 /* Posición del cursor y encoding */
-.sb-pos, .sb-enc {
+.sb-pos,
+.sb-enc {
   padding: 0 10px;
   height: 100%;
   display: flex;
   align-items: center;
-  background: rgba(0,0,0,0.18);
+  background: rgba(0, 0, 0, 0.18);
   font-size: 11px;
 }
 
 /* Tipo de lenguaje */
-.sl { padding: 0 10px; display: none; align-items: center; }
+.sl {
+  padding: 0 10px;
+  display: none;
+  align-items: center;
+}
 
 /* Nombre de archivo activo — hidden por defecto */
-.sf { display: none; }
+.sf {
+  display: none;
+}
 
-
-/* ═══════════════════════════════════════════════════════════════
+/*
    16. TAB SWITCHING — el corazón del sistema sin JavaScript
 
    Usando el selector general de hermanos (~) llegamos desde
@@ -615,59 +705,64 @@ html, body {
    - La pestaña (tab) activa con indicador azul
    - El archivo en el sidebar Neotree
    - El nombre y lenguaje en la statusbar
-═══════════════════════════════════════════════════════════════ */
+*/
 
 /* ── Mostrar el panel correcto ─────────────────────────────────── */
 #r-presentation:checked ~ .nvim-window .panel-presentation,
-#r-about:checked        ~ .nvim-window .panel-about,
-#r-skills:checked       ~ .nvim-window .panel-skills,
-#r-projects:checked     ~ .nvim-window .panel-projects,
-#r-contact:checked      ~ .nvim-window .panel-contact {
-  display: flex;    /* flex para que la terminal ocupe su lugar */
+#r-about:checked ~ .nvim-window .panel-about,
+#r-skills:checked ~ .nvim-window .panel-skills,
+#r-contact:checked ~ .nvim-window .panel-contact {
+  display: flex; /* flex para que la terminal ocupe su lugar */
 }
 
 /* ── Tab activa: texto visible + indicador azul ─────────────────── */
 #r-presentation:checked ~ .nvim-window label[for="r-presentation"].tab,
-#r-about:checked        ~ .nvim-window label[for="r-about"].tab,
-#r-skills:checked       ~ .nvim-window label[for="r-skills"].tab,
-#r-projects:checked     ~ .nvim-window label[for="r-projects"].tab,
-#r-contact:checked      ~ .nvim-window label[for="r-contact"].tab {
+#r-about:checked ~ .nvim-window label[for="r-about"].tab,
+#r-skills:checked ~ .nvim-window label[for="r-skills"].tab,
+#r-contact:checked ~ .nvim-window label[for="r-contact"].tab {
   color: var(--fg);
   background: var(--bg-tab-on);
 }
 
 #r-presentation:checked ~ .nvim-window label[for="r-presentation"].tab::after,
-#r-about:checked        ~ .nvim-window label[for="r-about"].tab::after,
-#r-skills:checked       ~ .nvim-window label[for="r-skills"].tab::after,
-#r-projects:checked     ~ .nvim-window label[for="r-projects"].tab::after,
-#r-contact:checked      ~ .nvim-window label[for="r-contact"].tab::after {
+#r-about:checked ~ .nvim-window label[for="r-about"].tab::after,
+#r-skills:checked ~ .nvim-window label[for="r-skills"].tab::after,
+#r-contact:checked ~ .nvim-window label[for="r-contact"].tab::after {
   background: var(--tab-marker);
 }
 
 /* ── Archivo activo en Neotree ──────────────────────────────────── */
 #r-presentation:checked ~ .nvim-window label[for="r-presentation"].tree-file,
-#r-about:checked        ~ .nvim-window label[for="r-about"].tree-file,
-#r-skills:checked       ~ .nvim-window label[for="r-skills"].tree-file,
-#r-projects:checked     ~ .nvim-window label[for="r-projects"].tree-file,
-#r-contact:checked      ~ .nvim-window label[for="r-contact"].tree-file {
+#r-about:checked ~ .nvim-window label[for="r-about"].tree-file,
+#r-skills:checked ~ .nvim-window label[for="r-skills"].tree-file,
+#r-contact:checked ~ .nvim-window label[for="r-contact"].tree-file {
   background: var(--tree-active);
   color: var(--fg);
 }
 
 /* ── Nombre y lenguaje en la statusbar ──────────────────────────── */
-#r-presentation:checked ~ .nvim-window .sf-presentation { display: flex; }
-#r-about:checked        ~ .nvim-window .sf-about        { display: flex; }
-#r-skills:checked       ~ .nvim-window .sf-skills       { display: flex; }
-#r-projects:checked     ~ .nvim-window .sf-projects     { display: flex; }
-#r-contact:checked      ~ .nvim-window .sf-contact      { display: flex; }
+#r-presentation:checked ~ .nvim-window .sf-presentation {
+  display: flex;
+}
+#r-about:checked ~ .nvim-window .sf-about {
+  display: flex;
+}
+#r-skills:checked ~ .nvim-window .sf-skills {
+  display: flex;
+}
+#r-contact:checked ~ .nvim-window .sf-contact {
+  display: flex;
+}
 
-#r-presentation:checked ~ .nvim-window .sl-presentation { display: flex; }
+#r-presentation:checked ~ .nvim-window .sl-presentation {
+  display: flex;
+}
 
-#r-about:checked    ~ .nvim-window .sl-other,
-#r-skills:checked   ~ .nvim-window .sl-other,
-#r-projects:checked ~ .nvim-window .sl-other,
-#r-contact:checked  ~ .nvim-window .sl-other { display: flex; }
-
+#r-about:checked ~ .nvim-window .sl-json,
+#r-skills:checked ~ .nvim-window .sl-json,
+#r-contact:checked ~ .nvim-window .sl-json {
+  display: flex;
+}
 
 /* ── 17. ANIMACIÓN DE TERMINAL ───────────────────────────────────
    Solo se activa cuando presentation.tsx está seleccionado.
@@ -690,24 +785,52 @@ html, body {
   Los delays comienzan después de que la terminal termina de abrirse (~0.6s).
   Cada línea tiene ~150ms de diferencia para simular la ejecución real.
 */
-#r-presentation:checked ~ .nvim-window .tl-1  { animation: line-appear 0.15s ease 0.65s forwards; }
-#r-presentation:checked ~ .nvim-window .tl-2  { animation: line-appear 0.15s ease 0.82s forwards; }
-#r-presentation:checked ~ .nvim-window .tl-3  { animation: line-appear 0.12s ease 0.96s forwards; }
-#r-presentation:checked ~ .nvim-window .tl-4  { animation: line-appear 0.12s ease 1.08s forwards; }
-#r-presentation:checked ~ .nvim-window .tl-5  { animation: line-appear 0.12s ease 1.20s forwards; }
-#r-presentation:checked ~ .nvim-window .tl-6  { animation: line-appear 0.12s ease 1.32s forwards; }
-#r-presentation:checked ~ .nvim-window .tl-7  { animation: line-appear 0.12s ease 1.44s forwards; }
-#r-presentation:checked ~ .nvim-window .tl-8  { animation: line-appear 0.12s ease 1.56s forwards; }
-#r-presentation:checked ~ .nvim-window .tl-9  { animation: line-appear 0.15s ease 1.75s forwards; }
-#r-presentation:checked ~ .nvim-window .tl-10 { animation: line-appear 0.15s ease 1.95s forwards; }
-
+#r-presentation:checked ~ .nvim-window .tl-1 {
+  animation: line-appear 0.15s ease 0.65s forwards;
+}
+#r-presentation:checked ~ .nvim-window .tl-2 {
+  animation: line-appear 0.15s ease 0.82s forwards;
+}
+#r-presentation:checked ~ .nvim-window .tl-3 {
+  animation: line-appear 0.12s ease 0.96s forwards;
+}
+#r-presentation:checked ~ .nvim-window .tl-4 {
+  animation: line-appear 0.12s ease 1.08s forwards;
+}
+#r-presentation:checked ~ .nvim-window .tl-5 {
+  animation: line-appear 0.12s ease 1.2s forwards;
+}
+#r-presentation:checked ~ .nvim-window .tl-6 {
+  animation: line-appear 0.12s ease 1.32s forwards;
+}
+#r-presentation:checked ~ .nvim-window .tl-7 {
+  animation: line-appear 0.12s ease 1.44s forwards;
+}
+#r-presentation:checked ~ .nvim-window .tl-8 {
+  animation: line-appear 0.12s ease 1.56s forwards;
+}
+#r-presentation:checked ~ .nvim-window .tl-9 {
+  animation: line-appear 0.15s ease 1.75s forwards;
+}
+#r-presentation:checked ~ .nvim-window .tl-10 {
+  animation: line-appear 0.15s ease 1.95s forwards;
+}
 
 /* ── 18. SCROLLBAR GLOBAL ────────────────────────────────────────── */
-::-webkit-scrollbar       { width: 5px; height: 5px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #3a3b55; }
-
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3b55;
+}
 
 /* ── 19. RESPONSIVE ───────────────────────────────────────────────
    En pantallas pequeñas se oculta el sidebar y se ajusta la
@@ -719,12 +842,23 @@ html, body {
     --fs: 12px;
     --term-h: 220px;
   }
-  .neotree { display: none; }
-  .tab { padding: 0 6px; font-size: 11px; }
-  .tab-lang { display: none; }  /* ocultar badge en móvil */
+  .neotree {
+    display: none;
+  }
+  .tab {
+    padding: 0 6px;
+    font-size: 11px;
+  }
+  .tab-lang {
+    display: none;
+  } /* ocultar badge en móvil */
 }
 
 @media (max-width: 420px) {
-  :root { --fs: 11px; }
-  .sb-right { display: none; }
+  :root {
+    --fs: 11px;
+  }
+  .sb-right {
+    display: none;
+  }
 }

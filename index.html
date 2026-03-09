@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Portfolio — Aryel Rivera · Systems Engineering Student" />
+    <meta
+      name="description"
+      content="Portfolio — Aryel Rivera · Systems Engineering Student"
+    />
     <title>dev.portfolio - nvim</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -14,29 +17,29 @@
     />
   </head>
   <body>
-
     <!-- Tab switching without JavaScript.
          Hidden radio inputs live here as siblings of .nvim-window.
          CSS selector #r-X:checked ~ .nvim-window activates the panel,
          the active tab, and the file highlight in Neotree. -->
 
-    <input type="radio" name="tab" id="r-presentation" class="tab-radio" checked />
-    <input type="radio" name="tab" id="r-about"        class="tab-radio" />
-    <input type="radio" name="tab" id="r-skills"       class="tab-radio" />
-    <input type="radio" name="tab" id="r-projects"     class="tab-radio" />
-    <input type="radio" name="tab" id="r-contact"      class="tab-radio" />
+    <input
+      type="radio"
+      name="tab"
+      id="r-presentation"
+      class="tab-radio"
+      checked
+    />
+    <input type="radio" name="tab" id="r-about" class="tab-radio" />
+    <input type="radio" name="tab" id="r-skills" class="tab-radio" />
+    <input type="radio" name="tab" id="r-contact" class="tab-radio" />
 
     <!-- Neovim main window -->
     <div class="nvim-window">
-
       <!-- OS title bar -->
-      <header class="nvim-titlebar">
-        dev.portfolio - nvim
-      </header>
+      <header class="nvim-titlebar">dev.portfolio - nvim</header>
 
       <!-- Buffer tabs (Neovim tabline) -->
       <div class="nvim-tabbar" role="tablist" aria-label="Buffers abiertos">
-
         <label for="r-presentation" class="tab" role="tab">
           <span class="tab-lang ts">TS</span>
           presentation.tsx
@@ -55,75 +58,94 @@
           <span class="tab-x" aria-hidden="true">×</span>
         </label>
 
-        <label for="r-projects" class="tab" role="tab">
-          <span class="tab-lang json">{}</span>
-          projects.json
-          <span class="tab-x" aria-hidden="true">×</span>
-        </label>
-
         <label for="r-contact" class="tab" role="tab">
           <span class="tab-lang json">{}</span>
           contact.json
           <span class="tab-x" aria-hidden="true">×</span>
         </label>
-
-      </div><!-- /tabbar -->
+      </div>
+      <!-- /tabbar -->
 
       <!-- Body: Neotree sidebar + editor area -->
       <div class="nvim-body">
-
         <!-- Sidebar: each <label> links to the radio that activates its panel -->
         <aside class="neotree" aria-label="Neotree file explorer">
-
           <h2 class="neotree-header">Neotree</h2>
 
           <nav aria-label="File tree">
-
             <!-- Home root -->
-            <div class="tree-row tree-dir" style="--d:0">
-              <span class="tree-caret">▶</span>
+            <div class="tree-row tree-dir" style="--d: 0">
+              <span class="tree-caret open">▼</span>
+              <span class="ficon dir">📁</span>
               <span>~</span>
             </div>
 
             <!-- /src directory (open) -->
-            <div class="tree-row tree-dir" style="--d:1">
+            <div class="tree-row tree-dir" style="--d: 1">
               <span class="tree-caret open">▼</span>
+              <span class="ficon dir">📁</span>
               <span>/src</span>
             </div>
 
             <!-- Files inside /src (alphabetical, like real Neotree) -->
-            <label for="r-about"    class="tree-row tree-file" style="--d:2" aria-label="Open about.json">
+            <label
+              for="r-about"
+              class="tree-row tree-file"
+              style="--d: 2"
+              aria-label="Open about.json"
+            >
               <span class="ficon json">{}</span> about.json
             </label>
-            <label for="r-contact"  class="tree-row tree-file" style="--d:2" aria-label="Open contact.json">
+            <label
+              for="r-contact"
+              class="tree-row tree-file"
+              style="--d: 2"
+              aria-label="Open contact.json"
+            >
               <span class="ficon json">{}</span> contact.json
             </label>
-            <label for="r-presentation" class="tree-row tree-file" style="--d:2" aria-label="Open presentation.tsx">
+            <label
+              for="r-presentation"
+              class="tree-row tree-file"
+              style="--d: 2"
+              aria-label="Open presentation.tsx"
+            >
               <span class="ficon ts">TS</span> presentation.tsx
             </label>
-            <label for="r-projects" class="tree-row tree-file" style="--d:2" aria-label="Open projects.json">
-              <span class="ficon json">{}</span> projects.json
-            </label>
-            <label for="r-skills"   class="tree-row tree-file" style="--d:2" aria-label="Open skills.json">
+            <label
+              for="r-skills"
+              class="tree-row tree-file"
+              style="--d: 2"
+              aria-label="Open skills.json"
+            >
               <span class="ficon json">{}</span> skills.json
             </label>
-
           </nav>
-        </aside><!-- /neotree -->
+        </aside>
+        <!-- /neotree -->
 
         <!-- Editor area: each .panel is a buffer, only one visible at a time -->
         <main class="editor-area" aria-label="Editor">
-
           <!-- Buffer: presentation.tsx
                TypeScript object with CSS syntax highlighting.
                An animated terminal slides up when this buffer is active. -->
-          <article class="panel panel-presentation" aria-label="presentation.tsx" role="tabpanel">
-
+          <article
+            class="panel panel-presentation"
+            aria-label="presentation.tsx"
+            role="tabpanel"
+          >
             <!-- Source code -->
             <div class="editor-scroll">
-              <ol class="code-lines" aria-label="Source code — presentation.tsx">
+              <ol
+                class="code-lines"
+                aria-label="Source code — presentation.tsx"
+              >
                 <li><span class="c-comment">// Hi, world 👋</span></li>
-                <li><span class="c-comment">// Systems Engineering Student · Portfolio</span></li>
+                <li>
+                  <span class="c-comment"
+                    >// Systems Engineering Student · Portfolio</span
+                  >
+                </li>
                 <li class="blank"></li>
                 <li>
                   <span class="c-kw">import</span>
@@ -131,12 +153,14 @@
                   <span class="c-ty">{ Developer }</span>
                   <span class="c-tx"> </span>
                   <span class="c-kw">from</span>
-                  <span class="c-st"> "./types"</span><span class="c-pu">;</span>
+                  <span class="c-st"> "./types"</span
+                  ><span class="c-pu">;</span>
                 </li>
                 <li class="blank"></li>
                 <li>
                   <span class="c-kw">const</span>
-                  <span class="c-va"> developer</span><span class="c-op">:</span>
+                  <span class="c-va"> developer</span
+                  ><span class="c-op">:</span>
                   <span class="c-ty"> Developer</span>
                   <span class="c-op"> =</span>
                   <span class="c-pu"> {</span>
@@ -144,27 +168,33 @@
                 <li>
                   <span class="c-in1"></span>
                   <span class="c-pr">name</span><span class="c-op">:</span>
-                  <span class="c-st"> "Aryel Rivera"</span><span class="c-pu">,</span>
+                  <span class="c-st"> "Aryel Rivera"</span
+                  ><span class="c-pu">,</span>
                 </li>
                 <li>
                   <span class="c-in1"></span>
                   <span class="c-pr">role</span><span class="c-op">:</span>
-                  <span class="c-st"> "Systems Engineering Student"</span><span class="c-pu">,</span>
+                  <span class="c-st"> "Systems Engineering Student"</span
+                  ><span class="c-pu">,</span>
                 </li>
                 <li>
                   <span class="c-in1"></span>
                   <span class="c-pr">location</span><span class="c-op">:</span>
-                  <span class="c-st"> "Pérez Zeledón, Costa Rica 🇨🇷"</span><span class="c-pu">,</span>
+                  <span class="c-st"> "Pérez Zeledón, Costa Rica"</span
+                  ><span class="c-pu">,</span>
                 </li>
                 <li>
                   <span class="c-in1"></span>
-                  <span class="c-pr">university</span><span class="c-op">:</span>
-                  <span class="c-st"> "UNA — Sede Brunca"</span><span class="c-pu">,</span>
+                  <span class="c-pr">university</span
+                  ><span class="c-op">:</span>
+                  <span class="c-st"> "UNA — Sede Brunca"</span
+                  ><span class="c-pu">,</span>
                 </li>
                 <li>
                   <span class="c-in1"></span>
-                  <span class="c-pr">available</span><span class="c-op">:</span>
-                  <span class="c-bo"> true</span><span class="c-pu">,</span>
+                  <span class="c-pr">available</span
+                  ><span class="c-op">:</span> <span class="c-bo"> true</span
+                  ><span class="c-pu">,</span>
                 </li>
                 <li>
                   <span class="c-in1"></span>
@@ -176,36 +206,53 @@
                   <span class="c-pr">languages</span><span class="c-op">:</span>
                   <span class="c-pu"> [</span>
                 </li>
-                <li><span class="c-in2"></span><span class="c-st">"Java"</span><span class="c-pu">,</span></li>
-                <li><span class="c-in2"></span><span class="c-st">"Python"</span><span class="c-pu">,</span></li>
-                <li><span class="c-in2"></span><span class="c-st">"Rust"</span><span class="c-pu">, </span><span class="c-comment">// learning</span></li>
+                <li>
+                  <span class="c-in2"></span><span class="c-st">"Java"</span
+                  ><span class="c-pu">,</span>
+                </li>
+                <li>
+                  <span class="c-in2"></span><span class="c-st">"Python"</span
+                  ><span class="c-pu">,</span>
+                </li>
+                <li>
+                  <span class="c-in2"></span><span class="c-st">"Rust"</span
+                  ><span class="c-pu">, </span
+                  ><span class="c-comment">// learning</span>
+                </li>
                 <li><span class="c-in1"></span><span class="c-pu">],</span></li>
                 <li>
                   <span class="c-in1"></span>
                   <span class="c-pr">focus</span><span class="c-op">:</span>
-                  <span class="c-st"> "Backend, systems &amp; tooling"</span><span class="c-pu">,</span>
+                  <span class="c-st"> "Backend, systems &amp; tooling"</span
+                  ><span class="c-pu">,</span>
                 </li>
                 <li>
                   <span class="c-in1"></span>
                   <span class="c-pr">bio</span><span class="c-op">:</span>
-                  <span class="c-st"> `Systems Engineering student with a strong</span>
+                  <span class="c-st">
+                    `Systems Engineering student with a strong interest in
+                    software, operating systems and Linux-first
+                    workflows.`</span
+                  >
                 </li>
-                <li><span class="c-st c-in1">   interest in software, operating systems</span></li>
-                <li><span class="c-st c-in1">   and Linux-first workflows.`</span><span class="c-pu">,</span></li>
                 <li><span class="c-pu">};</span></li>
                 <li class="blank"></li>
                 <li>
                   <span class="c-kw">export default</span>
-                  <span class="c-va"> developer</span><span class="c-pu">;</span>
+                  <span class="c-va"> developer</span
+                  ><span class="c-pu">;</span>
                 </li>
               </ol>
-            </div><!-- /editor-scroll -->
+            </div>
+            <!-- /editor-scroll -->
 
             <!-- Animated terminal: simulates Neovim's :terminal split.
                  Slides up with CSS animation when this buffer is active.
                  Each line appears with a staggered delay. Pure CSS, no JS. -->
-            <section class="nvim-term" aria-label="Neovim terminal — ts-node output">
-
+            <section
+              class="nvim-term"
+              aria-label="Neovim terminal — ts-node output"
+            >
               <!-- Terminal bar (mirrors the statusline of the bottom split) -->
               <header class="term-bar">
                 <span class="term-mode">TERMINAL</span>
@@ -216,200 +263,572 @@
                    display:flex on .term-line collapses HTML whitespace.
                    role="log" is the ARIA role for sequential terminal output. -->
               <div class="term-body" role="log" aria-live="polite">
-                <p class="term-line tl-1"><span class="t-prompt">❯</span><span class="t-cmd"> ts-node presentation.tsx</span></p>
-                <p class="term-line tl-2"><span class="t-ty">Developer</span><span class="t-pu"> {</span></p>
-                <p class="term-line tl-3"><span class="t-in1"></span><span class="t-pr">name</span><span class="t-pu">:</span><span class="t-st"> 'Aryel Rivera'</span><span class="t-pu">,</span></p>
-                <p class="term-line tl-4"><span class="t-in1"></span><span class="t-pr">role</span><span class="t-pu">:</span><span class="t-st"> 'Systems Engineering Student'</span><span class="t-pu">,</span></p>
-                <p class="term-line tl-5"><span class="t-in1"></span><span class="t-pr">location</span><span class="t-pu">:</span><span class="t-st"> 'Pérez Zeledón, Costa Rica 🇨🇷'</span><span class="t-pu">,</span></p>
-                <p class="term-line tl-6"><span class="t-in1"></span><span class="t-pr">os</span><span class="t-pu">:</span><span class="t-st"> 'NixOS'</span><span class="t-pu">,</span></p>
-                <p class="term-line tl-7"><span class="t-in1"></span><span class="t-pr">languages</span><span class="t-pu">: [</span><span class="t-st">'Java'</span><span class="t-pu">,</span><span class="t-st"> 'Python'</span><span class="t-pu">,</span><span class="t-st"> 'Rust'</span><span class="t-pu">],</span></p>
+                <p class="term-line tl-1">
+                  <span class="t-prompt">❯</span
+                  ><span class="t-cmd"> ts-node presentation.tsx</span>
+                </p>
+                <p class="term-line tl-2">
+                  <span class="t-ty">Developer</span
+                  ><span class="t-pu"> {</span>
+                </p>
+                <p class="term-line tl-3">
+                  <span class="t-in1"></span><span class="t-pr">name</span
+                  ><span class="t-pu">:</span
+                  ><span class="t-st"> 'Aryel Rivera'</span
+                  ><span class="t-pu">,</span>
+                </p>
+                <p class="term-line tl-4">
+                  <span class="t-in1"></span><span class="t-pr">role</span
+                  ><span class="t-pu">:</span
+                  ><span class="t-st"> 'Systems Engineering Student'</span
+                  ><span class="t-pu">,</span>
+                </p>
+                <p class="term-line tl-5">
+                  <span class="t-in1"></span><span class="t-pr">location</span
+                  ><span class="t-pu">:</span
+                  ><span class="t-st"> 'Pérez Zeledón, Costa Rica'</span
+                  ><span class="t-pu">,</span>
+                </p>
+                <p class="term-line tl-6">
+                  <span class="t-in1"></span><span class="t-pr">os</span
+                  ><span class="t-pu">:</span><span class="t-st"> 'NixOS'</span
+                  ><span class="t-pu">,</span>
+                </p>
+                <p class="term-line tl-7">
+                  <span class="t-in1"></span><span class="t-pr">languages</span
+                  ><span class="t-pu">: [</span><span class="t-st">'Java'</span
+                  ><span class="t-pu">,</span><span class="t-st"> 'Python'</span
+                  ><span class="t-pu">,</span><span class="t-st"> 'Rust'</span
+                  ><span class="t-pu">],</span>
+                </p>
                 <p class="term-line tl-8"><span class="t-pu">}</span></p>
-                <p class="term-line tl-9"><span class="t-dim">[Done] exited with code=0 in 0.631s</span></p>
-                <p class="term-line tl-10"><span class="t-prompt">❯</span><span class="t-cursor" aria-hidden="true">█</span></p>
-              </div><!-- /term-body -->
-
-            </section><!-- /nvim-term -->
-          </article><!-- /panel-presentation -->
-
+                <p class="term-line tl-9">
+                  <span class="t-dim">[Done] exited with code=0 in 0.631s</span>
+                </p>
+                <p class="term-line tl-10">
+                  <span class="t-prompt">❯</span
+                  ><span class="t-cursor" aria-hidden="true">█</span>
+                </p>
+              </div>
+              <!-- /term-body -->
+            </section>
+            <!-- /nvim-term -->
+          </article>
+          <!-- /panel-presentation -->
 
           <!-- Buffer: about.json -->
-          <article class="panel panel-about" aria-label="about.json" role="tabpanel">
+          <article
+            class="panel panel-about"
+            aria-label="about.json"
+            role="tabpanel"
+          >
             <div class="editor-scroll">
               <ol class="code-lines" aria-label="Source code — about.json">
                 <li><span class="c-pu">{</span></li>
-                <li><span class="c-in1"></span><span class="c-pr">"name"</span><span class="c-op">:</span><span class="c-st"> "Aryel Rivera"</span><span class="c-pu">,</span></li>
-                <li><span class="c-in1"></span><span class="c-pr">"role"</span><span class="c-op">:</span><span class="c-st"> "Systems Engineering Student"</span><span class="c-pu">,</span></li>
-                <li><span class="c-in1"></span><span class="c-pr">"location"</span><span class="c-op">:</span><span class="c-st"> "Pérez Zeledón, Costa Rica"</span><span class="c-pu">,</span></li>
-                <li><span class="c-in1"></span><span class="c-pr">"university"</span><span class="c-op">:</span><span class="c-st"> "UNA — Sede Brunca"</span><span class="c-pu">,</span></li>
-                <li><span class="c-in1"></span><span class="c-pr">"career"</span><span class="c-op">:</span><span class="c-st"> "Ingeniería en Sistemas"</span><span class="c-pu">,</span></li>
-                <li><span class="c-in1"></span><span class="c-pr">"available"</span><span class="c-op">:</span><span class="c-bo"> true</span><span class="c-pu">,</span></li>
-                <li><span class="c-in1"></span><span class="c-pr">"environment"</span><span class="c-op">:</span><span class="c-pu"> {</span></li>
-                <li><span class="c-in2"></span><span class="c-pr">"os"</span><span class="c-op">:</span><span class="c-st"> "NixOS"</span><span class="c-pu">,</span></li>
-                <li><span class="c-in2"></span><span class="c-pr">"laptop"</span><span class="c-op">:</span><span class="c-st"> "Lenovo ThinkBook 14s Yoga G2"</span><span class="c-pu">,</span></li>
-                <li><span class="c-in2"></span><span class="c-pr">"editor"</span><span class="c-op">:</span><span class="c-st"> "VS Code / Neovim"</span></li>
+                <li>
+                  <span class="c-in1"></span><span class="c-pr">"name"</span
+                  ><span class="c-op">:</span
+                  ><span class="c-st"> "Aryel Rivera"</span
+                  ><span class="c-pu">,</span>
+                </li>
+                <li>
+                  <span class="c-in1"></span><span class="c-pr">"role"</span
+                  ><span class="c-op">:</span
+                  ><span class="c-st"> "Systems Engineering Student"</span
+                  ><span class="c-pu">,</span>
+                </li>
+                <li>
+                  <span class="c-in1"></span><span class="c-pr">"location"</span
+                  ><span class="c-op">:</span
+                  ><span class="c-st"> "Pérez Zeledón, Costa Rica"</span
+                  ><span class="c-pu">,</span>
+                </li>
+                <li>
+                  <span class="c-in1"></span
+                  ><span class="c-pr">"university"</span
+                  ><span class="c-op">:</span
+                  ><span class="c-st"> "UNA — Sede Brunca"</span
+                  ><span class="c-pu">,</span>
+                </li>
+                <li>
+                  <span class="c-in1"></span><span class="c-pr">"career"</span
+                  ><span class="c-op">:</span
+                  ><span class="c-st"> "Ingeniería en Sistemas"</span
+                  ><span class="c-pu">,</span>
+                </li>
+                <li>
+                  <span class="c-in1"></span
+                  ><span class="c-pr">"available"</span
+                  ><span class="c-op">:</span><span class="c-bo"> true</span
+                  ><span class="c-pu">,</span>
+                </li>
+                <li>
+                  <span class="c-in1"></span
+                  ><span class="c-pr">"environment"</span
+                  ><span class="c-op">:</span><span class="c-pu"> {</span>
+                </li>
+                <li>
+                  <span class="c-in2"></span><span class="c-pr">"os"</span
+                  ><span class="c-op">:</span><span class="c-st"> "NixOS"</span
+                  ><span class="c-pu">,</span>
+                </li>
+                <li>
+                  <span class="c-in2"></span><span class="c-pr">"laptop"</span
+                  ><span class="c-op">:</span
+                  ><span class="c-st"> "Lenovo ThinkBook 14s Yoga G2"</span
+                  ><span class="c-pu">,</span>
+                </li>
+                <li>
+                  <span class="c-in2"></span><span class="c-pr">"editor"</span
+                  ><span class="c-op">:</span
+                  ><span class="c-st"> "VS Code / Neovim"</span>
+                </li>
                 <li><span class="c-in1"></span><span class="c-pu">},</span></li>
-                <li><span class="c-in1"></span><span class="c-pr">"languages"</span><span class="c-op">:</span><span class="c-pu"> {</span></li>
-                <li><span class="c-in2"></span><span class="c-pr">"spanish"</span><span class="c-op">:</span><span class="c-st"> "native"</span><span class="c-pu">,</span></li>
-                <li><span class="c-in2"></span><span class="c-pr">"english"</span><span class="c-op">:</span><span class="c-st"> "B2"</span></li>
+                <li>
+                  <span class="c-in1"></span
+                  ><span class="c-pr">"languages"</span
+                  ><span class="c-op">:</span><span class="c-pu"> {</span>
+                </li>
+                <li>
+                  <span class="c-in2"></span><span class="c-pr">"spanish"</span
+                  ><span class="c-op">:</span><span class="c-st"> "native"</span
+                  ><span class="c-pu">,</span>
+                </li>
+                <li>
+                  <span class="c-in2"></span><span class="c-pr">"english"</span
+                  ><span class="c-op">:</span><span class="c-st"> "B2"</span>
+                </li>
                 <li><span class="c-in1"></span><span class="c-pu">},</span></li>
-                <li><span class="c-in1"></span><span class="c-pr">"focus"</span><span class="c-op">:</span><span class="c-pu"> [</span></li>
-                <li><span class="c-in2"></span><span class="c-st">"Backend development"</span><span class="c-pu">,</span></li>
-                <li><span class="c-in2"></span><span class="c-st">"Systems"</span><span class="c-pu">,</span></li>
-                <li><span class="c-in2"></span><span class="c-st">"Tooling"</span></li>
+                <li>
+                  <span class="c-in1"></span><span class="c-pr">"focus"</span
+                  ><span class="c-op">:</span><span class="c-pu"> [</span>
+                </li>
+                <li>
+                  <span class="c-in2"></span
+                  ><span class="c-st">"Backend development"</span
+                  ><span class="c-pu">,</span>
+                </li>
+                <li>
+                  <span class="c-in2"></span><span class="c-st">"Systems"</span
+                  ><span class="c-pu">,</span>
+                </li>
+                <li>
+                  <span class="c-in2"></span><span class="c-st">"Tooling"</span>
+                </li>
                 <li><span class="c-in1"></span><span class="c-pu">],</span></li>
-                <li><span class="c-in1"></span><span class="c-pr">"bio"</span><span class="c-op">:</span><span class="c-st"> "Systems Engineering student with a strong interest in software development, operating systems and experimenting with new tools. Linux-first workflow."</span></li>
+                <li>
+                  <span class="c-in1"></span><span class="c-pr">"bio"</span
+                  ><span class="c-op">:</span
+                  ><span class="c-st">
+                    "Systems Engineering student with a strong interest in
+                    software development, operating systems and experimenting
+                    with new tools. Linux-first workflow."</span
+                  >
+                </li>
                 <li><span class="c-pu">}</span></li>
               </ol>
             </div>
           </article>
 
-
           <!-- Buffer: skills.json — progress bars rendered with CSS --pct variable -->
-          <article class="panel panel-skills" aria-label="skills.json" role="tabpanel">
+          <article
+            class="panel panel-skills"
+            aria-label="skills.json"
+            role="tabpanel"
+          >
             <div class="editor-scroll">
               <ol class="code-lines" aria-label="Source code — skills.json">
                 <li><span class="c-pu">{</span></li>
 
-                <li><span class="c-in1"></span><span class="c-pr">"languages"</span><span class="c-op">:</span><span class="c-pu"> {</span></li>
                 <li>
-                  <span class="c-in2"></span><span class="c-pr">"Java"</span><span class="c-op">:</span>
-                  <span class="skill-row"><span class="c-nu">80</span><span class="c-pu">,</span><span class="skill-bar" style="--pct:80%" aria-label="80%"></span></span>
+                  <span class="c-in1"></span
+                  ><span class="c-pr">"languages"</span
+                  ><span class="c-op">:</span><span class="c-pu"> {</span>
                 </li>
                 <li>
-                  <span class="c-in2"></span><span class="c-pr">"Python"</span><span class="c-op">:</span>
-                  <span class="skill-row"><span class="c-nu">78</span><span class="c-pu">,</span><span class="skill-bar" style="--pct:78%" aria-label="78%"></span></span>
+                  <span class="c-in2"></span><span class="c-pr">"Java"</span
+                  ><span class="c-op">:</span>
+                  <span class="skill-row"
+                    ><span class="c-nu">80</span><span class="c-pu">,</span
+                    ><span
+                      class="skill-bar"
+                      style="--pct: 80%"
+                      aria-label="80%"
+                    ></span
+                  ></span>
                 </li>
                 <li>
-                  <span class="c-in2"></span><span class="c-pr">"C++"</span><span class="c-op">:</span>
-                  <span class="skill-row"><span class="c-nu">60</span><span class="c-pu">,</span><span class="skill-bar" style="--pct:60%" aria-label="60%"></span></span>
+                  <span class="c-in2"></span><span class="c-pr">"Python"</span
+                  ><span class="c-op">:</span>
+                  <span class="skill-row"
+                    ><span class="c-nu">78</span><span class="c-pu">,</span
+                    ><span
+                      class="skill-bar"
+                      style="--pct: 78%"
+                      aria-label="78%"
+                    ></span
+                  ></span>
                 </li>
                 <li>
-                  <span class="c-in2"></span><span class="c-pr">"Rust"</span><span class="c-op">:</span>
-                  <span class="skill-row"><span class="c-nu">20</span><span class="c-pu">, </span><span class="skill-bar" style="--pct:20%" aria-label="20%"></span></span><span class="c-comment"> // learning</span>
+                  <span class="c-in2"></span><span class="c-pr">"C++"</span
+                  ><span class="c-op">:</span>
+                  <span class="skill-row"
+                    ><span class="c-nu">60</span><span class="c-pu">,</span
+                    ><span
+                      class="skill-bar"
+                      style="--pct: 60%"
+                      aria-label="60%"
+                    ></span
+                  ></span>
+                </li>
+                <li>
+                  <span class="c-in2"></span><span class="c-pr">"Rust"</span
+                  ><span class="c-op">:</span>
+                  <span class="skill-row"
+                    ><span class="c-nu">20</span><span class="c-pu">, </span
+                    ><span
+                      class="skill-bar"
+                      style="--pct: 20%"
+                      aria-label="20%"
+                    ></span></span
+                  ><span class="c-comment"> // learning</span>
                 </li>
                 <li><span class="c-in1"></span><span class="c-pu">},</span></li>
 
-                <li><span class="c-in1"></span><span class="c-pr">"frameworks"</span><span class="c-op">:</span><span class="c-pu"> {</span></li>
                 <li>
-                  <span class="c-in2"></span><span class="c-pr">"Spring Boot"</span><span class="c-op">:</span>
-                  <span class="skill-row"><span class="c-nu">65</span><span class="c-pu">,</span><span class="skill-bar" style="--pct:65%" aria-label="65%"></span></span>
+                  <span class="c-in1"></span
+                  ><span class="c-pr">"frameworks"</span
+                  ><span class="c-op">:</span><span class="c-pu"> {</span>
                 </li>
                 <li>
-                  <span class="c-in2"></span><span class="c-pr">"JavaFX"</span><span class="c-op">:</span>
-                  <span class="skill-row"><span class="c-nu">60</span><span class="c-pu">,</span><span class="skill-bar" style="--pct:60%" aria-label="60%"></span></span>
+                  <span class="c-in2"></span
+                  ><span class="c-pr">"Spring Boot"</span
+                  ><span class="c-op">:</span>
+                  <span class="skill-row"
+                    ><span class="c-nu">65</span><span class="c-pu">,</span
+                    ><span
+                      class="skill-bar"
+                      style="--pct: 65%"
+                      aria-label="65%"
+                    ></span
+                  ></span>
                 </li>
                 <li>
-                  <span class="c-in2"></span><span class="c-pr">"Maven"</span><span class="c-op">:</span>
-                  <span class="skill-row"><span class="c-nu">70</span><span class="c-pu">,</span><span class="skill-bar" style="--pct:70%" aria-label="70%"></span></span>
+                  <span class="c-in2"></span><span class="c-pr">"JavaFX"</span
+                  ><span class="c-op">:</span>
+                  <span class="skill-row"
+                    ><span class="c-nu">60</span><span class="c-pu">,</span
+                    ><span
+                      class="skill-bar"
+                      style="--pct: 60%"
+                      aria-label="60%"
+                    ></span
+                  ></span>
                 </li>
                 <li>
-                  <span class="c-in2"></span><span class="c-pr">"Qt"</span><span class="c-op">:</span>
-                  <span class="skill-row"><span class="c-nu">50</span><span class="c-pu">,</span><span class="skill-bar" style="--pct:50%" aria-label="50%"></span></span>
+                  <span class="c-in2"></span><span class="c-pr">"Maven"</span
+                  ><span class="c-op">:</span>
+                  <span class="skill-row"
+                    ><span class="c-nu">70</span><span class="c-pu">,</span
+                    ><span
+                      class="skill-bar"
+                      style="--pct: 70%"
+                      aria-label="70%"
+                    ></span
+                  ></span>
+                </li>
+                <li>
+                  <span class="c-in2"></span><span class="c-pr">"Qt"</span
+                  ><span class="c-op">:</span>
+                  <span class="skill-row"
+                    ><span class="c-nu">50</span><span class="c-pu">,</span
+                    ><span
+                      class="skill-bar"
+                      style="--pct: 50%"
+                      aria-label="50%"
+                    ></span
+                  ></span>
                 </li>
                 <li><span class="c-in1"></span><span class="c-pu">},</span></li>
 
-                <li><span class="c-in1"></span><span class="c-pr">"tools"</span><span class="c-op">:</span><span class="c-pu"> [</span></li>
-                <li><span class="c-in2"></span><span class="c-st">"Git"</span><span class="c-pu">,</span> <span class="c-st">"Neovim"</span><span class="c-pu">,</span> <span class="c-st">"VS Code"</span><span class="c-pu">,</span> <span class="c-st">"Obsidian"</span></li>
+                <li>
+                  <span class="c-in1"></span><span class="c-pr">"tools"</span
+                  ><span class="c-op">:</span><span class="c-pu"> [</span>
+                </li>
+                <li>
+                  <span class="c-in2"></span><span class="c-st">"Git"</span
+                  ><span class="c-pu">,</span> <span class="c-st">"Neovim"</span
+                  ><span class="c-pu">,</span>
+                  <span class="c-st">"VS Code"</span><span class="c-pu">,</span>
+                  <span class="c-st">"Obsidian"</span>
+                </li>
                 <li><span class="c-in1"></span><span class="c-pu">],</span></li>
 
-                <li><span class="c-in1"></span><span class="c-pr">"focus"</span><span class="c-op">:</span><span class="c-pu"> [</span></li>
-                <li><span class="c-in2"></span><span class="c-st">"Backend development"</span><span class="c-pu">,</span> <span class="c-st">"Systems"</span><span class="c-pu">,</span> <span class="c-st">"Tooling"</span></li>
+                <li>
+                  <span class="c-in1"></span><span class="c-pr">"focus"</span
+                  ><span class="c-op">:</span><span class="c-pu"> [</span>
+                </li>
+                <li>
+                  <span class="c-in2"></span
+                  ><span class="c-st">"Backend development"</span
+                  ><span class="c-pu">,</span>
+                  <span class="c-st">"Systems"</span><span class="c-pu">,</span>
+                  <span class="c-st">"Tooling"</span>
+                </li>
                 <li><span class="c-in1"></span><span class="c-pu">]</span></li>
                 <li><span class="c-pu">}</span></li>
               </ol>
             </div>
           </article>
 
-
           <!-- Buffer: projects.json -->
-          <article class="panel panel-projects" aria-label="projects.json" role="tabpanel">
+          <article
+            class="panel panel-projects"
+            aria-label="projects.json"
+            role="tabpanel"
+          >
             <div class="editor-scroll">
               <ol class="code-lines" aria-label="Source code — projects.json">
                 <li><span class="c-pu">[</span></li>
 
                 <li><span class="c-in1"></span><span class="c-pu">{</span></li>
-                <li><span class="c-in2"></span><span class="c-pr">"name"</span><span class="c-op">:</span><span class="c-st"> "DonRoute"</span><span class="c-pu">,</span></li>
-                <li><span class="c-in2"></span><span class="c-pr">"description"</span><span class="c-op">:</span><span class="c-st"> "Academic project using nodes and linked lists in C++."</span><span class="c-pu">,</span></li>
-                <li><span class="c-in2"></span><span class="c-pr">"stack"</span><span class="c-op">:</span><span class="c-pu"> [</span><span class="c-st">"C++"</span><span class="c-pu">,</span><span class="c-st"> "CMake"</span><span class="c-pu">,</span><span class="c-st"> "Makefile"</span><span class="c-pu">],</span></li>
                 <li>
-                  <span class="c-in2"></span><span class="c-pr">"github"</span><span class="c-op">:</span>
-                  <a href="https://github.com/Aryelrh/DonRoute" target="_blank" rel="noopener noreferrer" class="c-link"> "github.com/Aryelrh/DonRoute"</a><span class="c-pu">,</span>
+                  <span class="c-in2"></span><span class="c-pr">"name"</span
+                  ><span class="c-op">:</span
+                  ><span class="c-st"> "DonRoute"</span
+                  ><span class="c-pu">,</span>
                 </li>
-                <li><span class="c-in2"></span><span class="c-pr">"demo"</span><span class="c-op">:</span><span class="c-nu"> null</span></li>
+                <li>
+                  <span class="c-in2"></span
+                  ><span class="c-pr">"description"</span
+                  ><span class="c-op">:</span
+                  ><span class="c-st">
+                    "Academic project using nodes and linked lists in
+                    C++."</span
+                  ><span class="c-pu">,</span>
+                </li>
+                <li>
+                  <span class="c-in2"></span><span class="c-pr">"stack"</span
+                  ><span class="c-op">:</span><span class="c-pu"> [</span
+                  ><span class="c-st">"C++"</span><span class="c-pu">,</span
+                  ><span class="c-st"> "CMake"</span><span class="c-pu">,</span
+                  ><span class="c-st"> "Makefile"</span
+                  ><span class="c-pu">],</span>
+                </li>
+                <li>
+                  <span class="c-in2"></span><span class="c-pr">"github"</span
+                  ><span class="c-op">:</span>
+                  <a
+                    href="https://github.com/Aryelrh/DonRoute"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="c-link"
+                  >
+                    "github.com/Aryelrh/DonRoute"</a
+                  ><span class="c-pu">,</span>
+                </li>
+                <li>
+                  <span class="c-in2"></span><span class="c-pr">"demo"</span
+                  ><span class="c-op">:</span><span class="c-nu"> null</span>
+                </li>
                 <li><span class="c-in1"></span><span class="c-pu">},</span></li>
                 <li class="blank"></li>
 
                 <li><span class="c-in1"></span><span class="c-pu">{</span></li>
-                <li><span class="c-in2"></span><span class="c-pr">"name"</span><span class="c-op">:</span><span class="c-st"> "KafkaCode"</span><span class="c-pu">,</span></li>
-                <li><span class="c-in2"></span><span class="c-pr">"description"</span><span class="c-op">:</span><span class="c-st"> "Small compiler that translates human-like language into C++."</span><span class="c-pu">,</span></li>
-                <li><span class="c-in2"></span><span class="c-pr">"stack"</span><span class="c-op">:</span><span class="c-pu"> [</span><span class="c-st">"C++"</span><span class="c-pu">,</span><span class="c-st"> "CMake"</span><span class="c-pu">],</span></li>
                 <li>
-                  <span class="c-in2"></span><span class="c-pr">"github"</span><span class="c-op">:</span>
-                  <a href="https://github.com/Aryelrh/KafkaCode" target="_blank" rel="noopener noreferrer" class="c-link"> "github.com/Aryelrh/KafkaCode"</a><span class="c-pu">,</span>
+                  <span class="c-in2"></span><span class="c-pr">"name"</span
+                  ><span class="c-op">:</span
+                  ><span class="c-st"> "KafkaCode"</span
+                  ><span class="c-pu">,</span>
                 </li>
-                <li><span class="c-in2"></span><span class="c-pr">"demo"</span><span class="c-op">:</span><span class="c-nu"> null</span></li>
+                <li>
+                  <span class="c-in2"></span
+                  ><span class="c-pr">"description"</span
+                  ><span class="c-op">:</span
+                  ><span class="c-st">
+                    "Small compiler that translates human-like language into
+                    C++."</span
+                  ><span class="c-pu">,</span>
+                </li>
+                <li>
+                  <span class="c-in2"></span><span class="c-pr">"stack"</span
+                  ><span class="c-op">:</span><span class="c-pu"> [</span
+                  ><span class="c-st">"C++"</span><span class="c-pu">,</span
+                  ><span class="c-st"> "CMake"</span
+                  ><span class="c-pu">],</span>
+                </li>
+                <li>
+                  <span class="c-in2"></span><span class="c-pr">"github"</span
+                  ><span class="c-op">:</span>
+                  <a
+                    href="https://github.com/Aryelrh/KafkaCode"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="c-link"
+                  >
+                    "github.com/Aryelrh/KafkaCode"</a
+                  ><span class="c-pu">,</span>
+                </li>
+                <li>
+                  <span class="c-in2"></span><span class="c-pr">"demo"</span
+                  ><span class="c-op">:</span><span class="c-nu"> null</span>
+                </li>
                 <li><span class="c-in1"></span><span class="c-pu">},</span></li>
                 <li class="blank"></li>
 
                 <li><span class="c-in1"></span><span class="c-pu">{</span></li>
-                <li><span class="c-in2"></span><span class="c-pr">"name"</span><span class="c-op">:</span><span class="c-st"> "nixos-config"</span><span class="c-pu">,</span></li>
-                <li><span class="c-in2"></span><span class="c-pr">"description"</span><span class="c-op">:</span><span class="c-st"> "Personal NixOS, Hyprland and Neovim configuration."</span><span class="c-pu">,</span></li>
-                <li><span class="c-in2"></span><span class="c-pr">"stack"</span><span class="c-op">:</span><span class="c-pu"> [</span><span class="c-st">"Nix"</span><span class="c-pu">,</span><span class="c-st"> "Lua"</span><span class="c-pu">],</span></li>
                 <li>
-                  <span class="c-in2"></span><span class="c-pr">"github"</span><span class="c-op">:</span>
-                  <a href="https://github.com/Aryelrh/nixos-config" target="_blank" rel="noopener noreferrer" class="c-link"> "github.com/Aryelrh/nixos-config"</a><span class="c-pu">,</span>
+                  <span class="c-in2"></span><span class="c-pr">"name"</span
+                  ><span class="c-op">:</span
+                  ><span class="c-st"> "nixos-config"</span
+                  ><span class="c-pu">,</span>
                 </li>
-                <li><span class="c-in2"></span><span class="c-pr">"demo"</span><span class="c-op">:</span><span class="c-nu"> null</span></li>
+                <li>
+                  <span class="c-in2"></span
+                  ><span class="c-pr">"description"</span
+                  ><span class="c-op">:</span
+                  ><span class="c-st">
+                    "Personal NixOS, Hyprland and Neovim configuration."</span
+                  ><span class="c-pu">,</span>
+                </li>
+                <li>
+                  <span class="c-in2"></span><span class="c-pr">"stack"</span
+                  ><span class="c-op">:</span><span class="c-pu"> [</span
+                  ><span class="c-st">"Nix"</span><span class="c-pu">,</span
+                  ><span class="c-st"> "Lua"</span><span class="c-pu">],</span>
+                </li>
+                <li>
+                  <span class="c-in2"></span><span class="c-pr">"github"</span
+                  ><span class="c-op">:</span>
+                  <a
+                    href="https://github.com/Aryelrh/nixos-config"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="c-link"
+                  >
+                    "github.com/Aryelrh/nixos-config"</a
+                  ><span class="c-pu">,</span>
+                </li>
+                <li>
+                  <span class="c-in2"></span><span class="c-pr">"demo"</span
+                  ><span class="c-op">:</span><span class="c-nu"> null</span>
+                </li>
                 <li><span class="c-in1"></span><span class="c-pu">},</span></li>
                 <li class="blank"></li>
 
                 <li><span class="c-in1"></span><span class="c-pu">{</span></li>
-                <li><span class="c-in2"></span><span class="c-pr">"name"</span><span class="c-op">:</span><span class="c-st"> "DreamJob"</span><span class="c-pu">,</span></li>
-                <li><span class="c-in2"></span><span class="c-pr">"description"</span><span class="c-op">:</span><span class="c-st"> "This portfolio. Pure HTML5 + CSS3, Neovim-themed."</span><span class="c-pu">,</span></li>
-                <li><span class="c-in2"></span><span class="c-pr">"stack"</span><span class="c-op">:</span><span class="c-pu"> [</span><span class="c-st">"HTML5"</span><span class="c-pu">,</span><span class="c-st"> "CSS3"</span><span class="c-pu">],</span></li>
                 <li>
-                  <span class="c-in2"></span><span class="c-pr">"github"</span><span class="c-op">:</span>
-                  <a href="https://github.com/Aryelrh/DreamJob" target="_blank" rel="noopener noreferrer" class="c-link"> "github.com/Aryelrh/DreamJob"</a><span class="c-pu">,</span>
+                  <span class="c-in2"></span><span class="c-pr">"name"</span
+                  ><span class="c-op">:</span
+                  ><span class="c-st"> "DreamJob"</span
+                  ><span class="c-pu">,</span>
                 </li>
-                <li><span class="c-in2"></span><span class="c-pr">"demo"</span><span class="c-op">:</span><span class="c-nu"> null</span></li>
+                <li>
+                  <span class="c-in2"></span
+                  ><span class="c-pr">"description"</span
+                  ><span class="c-op">:</span
+                  ><span class="c-st">
+                    "This portfolio. Pure HTML5 + CSS3, Neovim-themed."</span
+                  ><span class="c-pu">,</span>
+                </li>
+                <li>
+                  <span class="c-in2"></span><span class="c-pr">"stack"</span
+                  ><span class="c-op">:</span><span class="c-pu"> [</span
+                  ><span class="c-st">"HTML5"</span><span class="c-pu">,</span
+                  ><span class="c-st"> "CSS3"</span><span class="c-pu">],</span>
+                </li>
+                <li>
+                  <span class="c-in2"></span><span class="c-pr">"github"</span
+                  ><span class="c-op">:</span>
+                  <a
+                    href="https://github.com/Aryelrh/DreamJob"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="c-link"
+                  >
+                    "github.com/Aryelrh/DreamJob"</a
+                  ><span class="c-pu">,</span>
+                </li>
+                <li>
+                  <span class="c-in2"></span><span class="c-pr">"demo"</span
+                  ><span class="c-op">:</span><span class="c-nu"> null</span>
+                </li>
                 <li><span class="c-in1"></span><span class="c-pu">}</span></li>
                 <li><span class="c-pu">]</span></li>
               </ol>
             </div>
           </article>
 
-
           <!-- Buffer: contact.json — links are real anchors styled as strings -->
-          <article class="panel panel-contact" aria-label="contact.json" role="tabpanel">
+          <article
+            class="panel panel-contact"
+            aria-label="contact.json"
+            role="tabpanel"
+          >
             <div class="editor-scroll">
               <ol class="code-lines" aria-label="Source code — contact.json">
                 <li><span class="c-pu">{</span></li>
                 <li>
-                  <span class="c-in1"></span><span class="c-pr">"email"</span><span class="c-op">:</span>
-                  <a href="mailto:argeljoser@gmail.com" class="c-link"> "argeljoser@gmail.com"</a><span class="c-pu">,</span>
+                  <span class="c-in1"></span><span class="c-pr">"email"</span
+                  ><span class="c-op">:</span>
+                  <a href="mailto:argeljoser@gmail.com" class="c-link">
+                    "argeljoser@gmail.com"</a
+                  ><span class="c-pu">,</span>
                 </li>
                 <li>
-                  <span class="c-in1"></span><span class="c-pr">"github"</span><span class="c-op">:</span>
-                  <a href="https://github.com/Aryelrh" target="_blank" rel="noopener noreferrer" class="c-link"> "github.com/Aryelrh"</a><span class="c-pu">,</span>
+                  <span class="c-in1"></span><span class="c-pr">"github"</span
+                  ><span class="c-op">:</span>
+                  <a
+                    href="https://github.com/Aryelrh"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="c-link"
+                  >
+                    "github.com/Aryelrh"</a
+                  ><span class="c-pu">,</span>
                 </li>
                 <li>
-                  <span class="c-in1"></span><span class="c-pr">"linkedin"</span><span class="c-op">:</span>
-                  <a href="https://www.linkedin.com/in/aryel-rivera/" target="_blank" rel="noopener noreferrer" class="c-link"> "linkedin.com/in/aryel-rivera"</a><span class="c-pu">,</span>
+                  <span class="c-in1"></span><span class="c-pr">"linkedin"</span
+                  ><span class="c-op">:</span>
+                  <a
+                    href="https://www.linkedin.com/in/aryel-rivera/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="c-link"
+                  >
+                    "linkedin.com/in/aryel-rivera"</a
+                  ><span class="c-pu">,</span>
                 </li>
-                <li><span class="c-in1"></span><span class="c-pr">"available"</span><span class="c-op">:</span><span class="c-bo"> true</span><span class="c-pu">,</span></li>
-                <li><span class="c-in1"></span><span class="c-pr">"timezone"</span><span class="c-op">:</span><span class="c-st"> "GMT-6 (Costa Rica)"</span><span class="c-pu">,</span></li>
-                <li><span class="c-in1"></span><span class="c-pr">"message"</span><span class="c-op">:</span><span class="c-st"> "My inbox is always open. I reply to every message."</span></li>
+                <li>
+                  <span class="c-in1"></span
+                  ><span class="c-pr">"available"</span
+                  ><span class="c-op">:</span><span class="c-bo"> true</span
+                  ><span class="c-pu">,</span>
+                </li>
+                <li>
+                  <span class="c-in1"></span><span class="c-pr">"timezone"</span
+                  ><span class="c-op">:</span
+                  ><span class="c-st"> "GMT-6 (Costa Rica)"</span
+                  ><span class="c-pu">,</span>
+                </li>
+                <li>
+                  <span class="c-in1"></span><span class="c-pr">"message"</span
+                  ><span class="c-op">:</span
+                  ><span class="c-st">
+                    "My inbox is always open. I reply to every message."</span
+                  >
+                </li>
                 <li><span class="c-pu">}</span></li>
               </ol>
             </div>
           </article>
-
-        </main><!-- /editor-area -->
-      </div><!-- /nvim-body -->
+        </main>
+        <!-- /editor-area -->
+      </div>
+      <!-- /nvim-body -->
 
       <!-- Status bar (statusline / lualine) -->
       <footer class="nvim-statusbar" aria-label="Neovim status bar">
-
         <!-- Left: mode + git branch -->
         <div class="sb-left">
           <span class="sb-mode">NORMAL</span>
@@ -421,20 +840,19 @@
           <span class="sf sf-presentation">presentation.tsx</span>
           <span class="sf sf-about">about.json</span>
           <span class="sf sf-skills">skills.json</span>
-          <span class="sf sf-projects">projects.json</span>
           <span class="sf sf-contact">contact.json</span>
         </div>
 
         <!-- Right: file type + cursor position -->
         <div class="sb-right">
           <span class="sl sl-presentation">TypeScript JSX</span>
-          <span class="sl sl-other">JSON</span>
+          <span class="sl sl-json">JSON</span>
           <span class="sb-pos">Ln 1, Col 1</span>
           <span class="sb-enc">UTF-8</span>
         </div>
-
-      </footer><!-- /status-bar -->
-
-    </div><!-- /nvim-window -->
+      </footer>
+      <!-- /status-bar -->
+    </div>
+    <!-- /nvim-window -->
   </body>
 </html>
