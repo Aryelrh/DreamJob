@@ -1,74 +1,66 @@
-/* ================================================================
-   dev.portfolio — Neovim UI · CSS puro (sin JavaScript)
-   Esquema de colores: Rosé Pine Moon
+/* dev.portfolio — Neovim UI, pure CSS (no JavaScript)
+   Color scheme: Rosé Pine Moon — rose-pine.com */
 
-/* ── 1. VARIABLES GLOBALES (tokens de diseño) ─────────────────
-   Rosé Pine Moon — rose-pine.com
-   base:#232136  surface:#2a273f  overlay:#393552
-   muted:#6e6a86  subtle:#908caa  text:#e0def4
-   love:#eb6f92  gold:#f6c177  rose:#ea9a97
-   pine:#3e8fb0  foam:#9ccfd8  iris:#c4a7e7
-   ──────────────────────────────────────────────────────────── */
+/* 1. DESIGN TOKENS ------------------------------------------------ */
 :root {
-  /* Fondos */
-  --bg: #232136; /* base — fondo principal del editor  */
-  --bg-dark: #1f1d2e; /* más oscuro — titlebar / chrome     */
-  --bg-sidebar: #2a273f; /* surface — Neotree                  */
-  --bg-float: #393552; /* overlay — popups / terminales      */
-  --bg-hl: #44415a; /* highlight-med — cursorline         */
-  --bg-tab-off: #1f1d2e; /* tab inactiva                       */
-  --bg-tab-on: #232136; /* tab activa                         */
-  --bg-statusbar: #3e8fb0; /* pine — statusbar                   */
-  --bg-mode: #9ccfd8; /* foam — sección del modo (NORMAL)   */
+  /* Backgrounds */
+  --bg:           #232136;  /* base — main editor bg */
+  --bg-dark:      #1f1d2e;  /* darker — titlebar / chrome */
+  --bg-sidebar:   #2a273f;  /* surface — Neotree */
+  --bg-float:     #393552;  /* overlay — popups / terminal */
+  --bg-hl:        #44415a;  /* highlight-med — cursorline */
+  --bg-tab-off:   #1f1d2e;  /* inactive tab */
+  --bg-tab-on:    #232136;  /* active tab */
+  --bg-statusbar: #3e8fb0;  /* pine — statusbar */
+  --bg-mode:      #9ccfd8;  /* foam — NORMAL mode badge */
 
-  /* Texto */
-  --fg: #e0def4; /* text — texto principal             */
-  --fg-dim: #44415a; /* highlight-med — line numbers       */
-  --fg-comment: #6e6a86; /* muted — comentarios                */
-  --fg-inactive: #6e6a86; /* muted — tabs inactivas             */
-  --fg-sidebar: #908caa; /* subtle — texto del sidebar         */
+  /* Foreground */
+  --fg:          #e0def4;   /* text — main */
+  --fg-dim:      #44415a;   /* highlight-med — line numbers */
+  --fg-comment:  #6e6a86;   /* muted */
+  --fg-inactive: #6e6a86;   /* muted — inactive tabs */
+  --fg-sidebar:  #908caa;   /* subtle — sidebar text */
 
-  /* Colores sintácticos */
-  --syn-kw: #c4a7e7; /* iris   — keywords: const, import   */
-  --syn-ty: #9ccfd8; /* foam   — tipos: Developer…         */
-  --syn-va: #e0def4; /* text   — variables                 */
-  --syn-pr: #9ccfd8; /* foam   — propiedades de objetos    */
-  --syn-st: #f6c177; /* gold   — strings                   */
-  --syn-nu: #ea9a97; /* rose   — numbers / booleans        */
-  --syn-op: #908caa; /* subtle — operadores: : =           */
-  --syn-pu: #e0def4; /* text   — puntuación: { } [ ] ; ,   */
-  --syn-cm: #6e6a86; /* muted  — comentarios // …          */
-  --syn-lk: #9ccfd8; /* foam   — links dentro del código   */
+  /* Syntax tokens */
+  --syn-kw:  #c4a7e7;  /* iris  — keywords */
+  --syn-ty:  #9ccfd8;  /* foam  — types */
+  --syn-va:  #e0def4;  /* text  — variables */
+  --syn-pr:  #9ccfd8;  /* foam  — properties */
+  --syn-st:  #f6c177;  /* gold  — strings */
+  --syn-nu:  #ea9a97;  /* rose  — numbers / booleans */
+  --syn-op:  #908caa;  /* subtle — operators */
+  --syn-pu:  #e0def4;  /* text  — punctuation */
+  --syn-cm:  #6e6a86;  /* muted — comments */
+  --syn-lk:  #9ccfd8;  /* foam  — links */
 
-  /* Terminal simulada */
-  --term-bg: #1f1d2e; /* más oscuro que base                */
-  --term-fg: #e0def4;
-  --term-green: #9ccfd8; /* foam                               */
-  --term-blue: #3e8fb0; /* pine                               */
-  --term-dim: #6e6a86; /* muted                              */
-  --term-h: 280px; /* alto de la terminal animada        */
+  /* Simulated terminal */
+  --term-bg:    #1f1d2e;
+  --term-fg:    #e0def4;
+  --term-green: #9ccfd8;  /* foam */
+  --term-blue:  #3e8fb0;  /* pine */
+  --term-dim:   #6e6a86;  /* muted */
+  --term-h:     280px;    /* animated terminal height */
 
-  /* Bordes y decoración */
-  --border: #393552; /* overlay                            */
-  --tab-marker: #eb6f92; /* love — indicador rosa en tab activa */
-  --tree-active: #2a283e; /* highlight-low                      */
-  --skill-track: #2a283e; /* highlight-low                      */
-  --skill-fill: #3e8fb0; /* pine                               */
+  /* Borders & decoration */
+  --border:      #393552;  /* overlay */
+  --tree-active: #2a283e;  /* highlight-low */
+  --skill-track: #2a283e;  /* highlight-low */
+  --skill-fill:  #3e8fb0;  /* pine */
 
-  /* Tipografía */
+  /* Typography */
   --font: "JetBrains Mono", "Cascadia Code", "Fira Code", monospace;
-  --fs: 13.5px;
-  --lh: 1.65;
+  --fs:   13.5px;
+  --lh:   1.65;
 
-  /* Alturas de chrome */
-  --titlebar-h: 27px;
-  --tabbar-h: 34px;
+  /* Chrome heights */
+  --titlebar-h:  27px;
+  --tabbar-h:    34px;
   --statusbar-h: 24px;
-  --sidebar-w: 210px;
-  --ln-w: 3.2rem; /* ancho de la columna de line numbers */
+  --sidebar-w:   210px;
+  --ln-w:        3.2rem;  /* line-number column width */
 }
 
-/* ── 2. RESET MÍNIMO ──────────────────────────────────────────── */
+/* 2. RESET ------------------------------------------------------- */
 *,
 *::before,
 *::after {
@@ -85,20 +77,17 @@ body {
   font-family: var(--font);
   font-size: var(--fs);
   line-height: var(--lh);
-  overflow: hidden; /* el scroll ocurre dentro de cada panel */
+  overflow: hidden; /* scroll happens inside each panel */
 }
 
-/* ── 3. RADIO INPUTS OCULTOS (mecanismo de tab switching) ────────
-   Estos inputs son los "interruptores" que CSS usa para saber
-   cuál pestaña/panel/archivo está activo, sin JavaScript.
-   ────────────────────────────────────────────────────────────── */
+/* 3. HIDDEN RADIO INPUTS — tab switching without JavaScript
+   CSS uses :checked state + general sibling selector (~)
+   to activate the correct panel, tab, and sidebar file. */
 .tab-radio {
   display: none;
 }
 
-/* ── 4. VENTANA DE NEOVIM — layout principal ─────────────────────
-   Grid de 4 filas: titlebar / tabbar / body / statusbar
-   ────────────────────────────────────────────────────────────── */
+/* 4. NEOVIM WINDOW — 4-row grid: titlebar / tabbar / body / statusbar */
 .nvim-window {
   display: grid;
   grid-template-rows: var(--titlebar-h) var(--tabbar-h) 1fr var(--statusbar-h);
@@ -106,7 +95,7 @@ body {
   overflow: hidden;
 }
 
-/* ── 5. BARRA DE TÍTULO (chrome del sistema operativo) ──────────── */
+/* 5. TITLE BAR (OS window chrome) */
 .nvim-titlebar {
   display: flex;
   align-items: center;
@@ -119,12 +108,8 @@ body {
   user-select: none;
 }
 
-/* ── 6. TABLINE — barra de buffers abiertos ──────────────────────
-   Cada <label> es una "pestaña" que apunta a un radio input.
-   Al hacer clic, activa el buffer correspondiente.
-   flex: 1 en .tab hace que todas tomen el mismo ancho y
-   cubran toda la barra horizontal sin scroll.
-   ────────────────────────────────────────────────────────────── */
+/* 6. TABLINE — open buffer tabs
+   Each <label> points to a radio input; clicking it activates the buffer. */
 .nvim-tabbar {
   display: flex;
   align-items: stretch;
@@ -133,11 +118,12 @@ body {
   user-select: none;
 }
 
-/* Tab individual — ancho natural como buffers reales de Neovim */
+/* Individual tab — equal width, filling the full tabbar */
 .tab {
-  flex: 0 0 auto; /* ancho determinado por el contenido */
+  flex: 1;               /* all tabs share the available width equally */
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   padding: 0 14px;
   cursor: pointer;
@@ -152,22 +138,11 @@ body {
     background 0.12s;
 }
 
-/* Indicador inferior (línea azul = buffer activo) */
-.tab::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: transparent;
-}
-
 .tab:hover {
   color: var(--fg);
 }
 
-/* Insignia de tipo de archivo */
+/* File-type badge inside tab */
 .tab-lang {
   font-size: 10px;
   font-weight: 700;
@@ -181,7 +156,7 @@ body {
   color: #f6c177;
 } /* gold  */
 
-/* Botón × de la pestaña — love (rojo-rosa) como en Rose Pine */
+/* × close button — love color */
 .tab-x {
   color: #eb6f92; /* love */
   font-size: 13px;
@@ -192,16 +167,14 @@ body {
   opacity: 1;
 }
 
-/* ── 7. BODY (Neotree + Editor) ──────────────────────────────────── */
+/* 7. BODY — sidebar + editor side by side */
 .nvim-body {
   display: flex;
   overflow: hidden;
-  min-height: 0; /* necesario para que el overflow funcione en flex */
+  min-height: 0; /* required for overflow to work inside flex */
 }
 
-/* ── 8. NEOTREE SIDEBAR ───────────────────────────────────────────
-   Imita el plugin nvim-neo-tree/neo-tree.nvim
-   ────────────────────────────────────────────────────────────── */
+/* 8. NEOTREE SIDEBAR — mimics the neo-tree.nvim plugin */
 .neotree {
   width: var(--sidebar-w);
   min-width: var(--sidebar-w);
@@ -216,9 +189,9 @@ body {
   user-select: none;
 }
 
-/* Encabezado del panel Neotree */
+/* Neotree panel header */
 .neotree-header {
-  margin: 0; /* reset del <h2> */
+  margin: 0; /* reset browser default <h2> margin */
   padding: 6px 10px 5px;
   font-size: 11px;
   font-weight: 600;
@@ -229,17 +202,17 @@ body {
   flex-shrink: 0;
 }
 
-/* Filas del árbol de archivos */
+/* File tree rows */
 .tree-row {
   display: flex;
   align-items: center;
   gap: 5px;
   padding: 2px 8px;
-  padding-left: calc(8px + var(--d, 0) * 14px); /* indentación por nivel */
+  padding-left: calc(8px + var(--d, 0) * 14px); /* indent level via --d custom property */
   font-size: 12.5px;
 }
 
-/* Fila de directorio */
+/* Directory row */
 .tree-dir {
   color: var(--fg-comment);
   cursor: default;
@@ -249,7 +222,7 @@ body {
   color: var(--fg-inactive);
 }
 
-/* Fila de archivo (label = clickable) */
+/* File row — <label> makes it clickable */
 .tree-file {
   color: var(--fg-sidebar);
   cursor: pointer;
@@ -259,11 +232,11 @@ body {
   border-radius: 2px;
 }
 .tree-file:hover {
-  background: rgba(156, 207, 216, 0.07); /* foam con baja opacidad */
+  background: rgba(156, 207, 216, 0.07); /* foam at low opacity */
   color: var(--fg);
 }
 
-/* Icono del tipo de archivo */
+/* File-type icon badge */
 .ficon {
   font-size: 9px;
   font-weight: 700;
@@ -272,28 +245,15 @@ body {
   flex-shrink: 0;
   letter-spacing: 0;
 }
-.ficon.ts {
-  color: #9ccfd8;
-  background: rgba(156, 207, 216, 0.12);
-} /* foam  */
-.ficon.json {
-  color: #f6c177;
-  background: rgba(246, 193, 119, 0.12);
-} /* gold  */
-.ficon.dir {
-  font-size: 12px;
-  background: none;
-  padding: 0;
-} /* folder emoji */
+.ficon.ts   { color: #9ccfd8; background: rgba(156,207,216,0.12); } /* foam */
+.ficon.json { color: #f6c177; background: rgba(246,193,119,0.12); } /* gold */
+.ficon.dir  { font-size: 12px; background: none; padding: 0; }       /* folder emoji */
 .tree-caret {
   font-size: 7px;
   color: var(--fg-comment);
 }
 
-/* ── 9. ÁREA DEL EDITOR ───────────────────────────────────────────
-   Contiene todos los paneles. Solo el panel activo es visible
-   (controlado por los radio inputs más abajo en el CSS).
-   ────────────────────────────────────────────────────────────── */
+/* 9. EDITOR AREA — holds all panels; only the active one is shown */
 .editor-area {
   flex: 1;
   overflow: hidden;
@@ -302,15 +262,15 @@ body {
   position: relative;
 }
 
-/* ── Panel base (buffer / archivo) ──────────────────────────────── */
+/* Base panel (buffer) — hidden by default */
 .panel {
-  display: none; /* oculto por defecto                     */
+  display: none;
   height: 100%;
   flex-direction: column;
   overflow: hidden;
 }
 
-/* Zona scrolleable del código (dentro del panel) */
+/* Scrollable code area inside a panel */
 .editor-scroll {
   flex: 1;
   overflow-y: auto;
@@ -321,14 +281,12 @@ body {
   min-height: 0;
 }
 
-/* ── 10. CODE LINES — numeración con CSS counters ─────────────────
-   Usa counter-increment para generar los números de línea sin
-   necesitar números hardcodeados en el HTML.
-   ────────────────────────────────────────────────────────────── */
+/* 10. CODE LINES — line numbers via CSS counters
+   counter-increment generates numbers automatically; no hardcoded HTML. */
 .code-lines {
   list-style: none;
   counter-reset: line;
-  min-width: max-content; /* evita que las líneas se rompan      */
+  min-width: max-content; /* prevent lines from wrapping */
 }
 
 .code-lines > li {
@@ -340,7 +298,7 @@ body {
   transition: background 0.08s;
 }
 
-/* Número de línea generado por ::before */
+/* Line number generated by ::before pseudo-element */
 .code-lines > li::before {
   content: counter(line);
   display: inline-block;
@@ -354,7 +312,7 @@ body {
   opacity: 0.6;
 }
 
-/* Hover: resaltar línea (como cursorline) */
+/* Hover highlight — mimics cursorline */
 .code-lines > li:hover {
   background: var(--bg-hl);
 }
@@ -362,56 +320,24 @@ body {
   min-height: calc(var(--lh) * 1em);
 }
 
-/* Helpers de indentación (simulan espacios/tabs) */
-.c-in1 {
-  display: inline-block;
-  width: 2ch;
-}
-.c-in2 {
-  display: inline-block;
-  width: 4ch;
-}
+/* Indentation helpers */
+.c-in1 { display: inline-block; width: 2ch; }
+.c-in2 { display: inline-block; width: 4ch; }
 
-/* ── 11. TOKENS DE SINTAXIS ──────────────────────────────────────
-   Cada clase corresponde a una categoría sintáctica del
-   lenguaje. Usadas en span's dentro de los .code-lines.
-   ────────────────────────────────────────────────────────────── */
-.c-kw {
-  color: var(--syn-kw);
-} /* keyword */
-.c-ty {
-  color: var(--syn-ty);
-} /* type    */
-.c-va {
-  color: var(--syn-va);
-} /* variable */
-.c-pr {
-  color: var(--syn-pr);
-} /* property */
-.c-st {
-  color: var(--syn-st);
-} /* string  */
-.c-nu {
-  color: var(--syn-nu);
-} /* number  */
-.c-bo {
-  color: var(--syn-nu);
-} /* boolean */
-.c-op {
-  color: var(--syn-op);
-} /* operator */
-.c-pu {
-  color: var(--syn-pu);
-} /* punctuation */
-.c-tx {
-  color: var(--fg);
-} /* texto plano */
-.c-comment {
-  color: var(--syn-cm);
-  font-style: italic;
-}
+/* 11. SYNTAX TOKENS — one class per syntax category, used on <span>s */
+.c-kw  { color: var(--syn-kw); }  /* keyword */
+.c-ty  { color: var(--syn-ty); }  /* type */
+.c-va  { color: var(--syn-va); }  /* variable */
+.c-pr  { color: var(--syn-pr); }  /* property */
+.c-st  { color: var(--syn-st); }  /* string */
+.c-nu  { color: var(--syn-nu); }  /* number */
+.c-bo  { color: var(--syn-nu); }  /* boolean */
+.c-op  { color: var(--syn-op); }  /* operator */
+.c-pu  { color: var(--syn-pu); }  /* punctuation */
+.c-tx  { color: var(--fg); }      /* plain text */
+.c-comment { color: var(--syn-cm); font-style: italic; }
 
-/* Links dentro del código (strings clicables) */
+/* Clickable links styled as strings */
 .c-link {
   color: var(--syn-lk);
   text-decoration: none;
@@ -425,17 +351,14 @@ body {
   border-bottom-color: var(--syn-lk);
 }
 
-/* ── 12. SKILL BARS ──────────────────────────────────────────────
-   Barras de progreso inline que viven dentro de las code-lines.
-   La variable CSS --pct define el porcentaje de llenado.
-   ────────────────────────────────────────────────────────────── */
+/* 12. SKILL BARS — inline progress bars; --pct sets fill width */
 .skill-row {
   display: inline-flex;
   align-items: center;
   gap: 8px;
 }
 
-/* Pista de la barra */
+/* Bar track */
 .skill-bar {
   display: inline-block;
   width: 110px;
@@ -448,7 +371,7 @@ body {
   flex-shrink: 0;
 }
 
-/* Relleno coloreado — animado con un fade-in al cargar */
+/* Colored fill */
 .skill-bar::after {
   content: "";
   position: absolute;
@@ -458,22 +381,10 @@ body {
   border-radius: 99px;
 }
 
-/* ── 13. TERMINAL ANIMADA ─────────────────────────────────────────
-   Simula el panel :terminal de Neovim. Se desliza hacia
-   arriba desde el borde inferior cuando presentation.tsx
-   está activo. Cada línea de output aparece con un delay
-   escalonado, imitando la ejecución real de ts-node.
-
-   Técnica:
-   - .nvim-term comienza con height:0 y overflow:hidden
-   - @keyframes term-open lo anima a height: var(--term-h)
-   - Las .term-line empiezan con opacity:0
-   - @keyframes line-appear las revela una a una con delays
-   ────────────────────────────────────────────────────────────── */
-
-/* Contenedor de la terminal (pegado al fondo del panel)
-   resize:vertical permite al usuario arrastrarlo para hacerlo más grande.
-   min-height y max-height acotan el rango de redimensionado. */
+/* 13. ANIMATED TERMINAL — mimics Neovim's :terminal split.
+   Slides up from the bottom of presentation.tsx.
+   Starts at height:0, animates to --term-h via @keyframes term-open.
+   Each .term-line starts invisible and fades in with staggered delays. */
 .nvim-term {
   flex-shrink: 0;
   height: 0;
@@ -483,17 +394,17 @@ body {
   display: flex;
   flex-direction: column;
   background: var(--term-bg);
-  /* resize:vertical activo solo cuando la animación le da height (ver sección 17) */
+  /* resize:vertical enabled once the animation gives it height (see section 17) */
   min-height: 100px;
   max-height: 70vh;
 }
 
-/* Barra de estado de la terminal (imita el statusline del split) */
+/* Terminal status bar — mimics the split's statusline */
 .term-bar {
   display: flex;
   align-items: center;
   gap: 8px;
-  background: var(--bg-float); /* overlay — surface del split  */
+  background: var(--bg-float); /* overlay */
   border-bottom: 1px solid var(--border);
   padding: 0 10px;
   height: 22px;
@@ -504,7 +415,7 @@ body {
 
 .term-mode {
   color: var(--bg-dark);
-  background: #f6c177; /* gold                          */
+  background: #f6c177; /* gold */
   font-weight: 700;
   font-size: 10.5px;
   padding: 0 5px;
@@ -515,7 +426,7 @@ body {
   color: var(--fg-comment);
 }
 
-/* Cuerpo scrolleable de la terminal */
+/* Scrollable terminal output body */
 .term-body {
   flex: 1;
   overflow-y: auto;
@@ -527,18 +438,16 @@ body {
   line-height: 1.55;
 }
 
-/* Cada línea de output
-   display:flex colapsa el whitespace del HTML (indentación del markup)
-   y usa .t-in1 para la indentación visual real, como en una terminal real. */
+/* One output line — display:flex collapses HTML whitespace */
 .term-line {
   display: flex;
   align-items: baseline;
   flex-wrap: nowrap;
-  opacity: 0; /* invisible hasta que la animación la revele */
+  opacity: 0; /* hidden until animation reveals it */
   line-height: 1.55;
 }
 
-/* Tokens del output de terminal */
+/* Terminal output tokens */
 .t-prompt {
   color: var(--term-green);
 }
@@ -569,18 +478,16 @@ body {
   width: 2ch;
 }
 
-/* Cursor parpadeante al final de la terminal */
+/* Blinking block cursor */
 .t-cursor {
   display: inline-block;
   color: var(--fg);
   animation: blink 1s step-start infinite;
 }
 
-/* ── 14. KEYFRAMES DE ANIMACIÓN ──────────────────────────────────
-   Todas las animaciones del proyecto definidas aquí.
-   ────────────────────────────────────────────────────────────── */
+/* 14. KEYFRAMES -------------------------------------------------- */
 
-/* Terminal se desliza hacia arriba */
+/* Terminal slides up from the bottom */
 @keyframes term-open {
   from {
     height: 0;
@@ -592,7 +499,7 @@ body {
   }
 }
 
-/* Línea de terminal aparece con un ligero desplazamiento */
+/* Terminal line fades in with a slight upward shift */
 @keyframes line-appear {
   from {
     opacity: 0;
@@ -604,7 +511,7 @@ body {
   }
 }
 
-/* Cursor parpadeante */
+/* Blinking cursor */
 @keyframes blink {
   0%,
   100% {
@@ -615,11 +522,8 @@ body {
   }
 }
 
-/* ── 15. STATUS BAR ──────────────────────────────────────────────
-   Imita lualine.nvim con secciones izquierda / centro / derecha.
-   El nombre del archivo activo y el tipo de lenguaje se
-   controlan con CSS usando los radio inputs.
-   ────────────────────────────────────────────────────────────── */
+/* 15. STATUS BAR — mimics lualine.nvim (left / center / right)
+   Active filename and language are driven by CSS radio state. */
 .nvim-statusbar {
   display: flex;
   align-items: stretch;
@@ -646,7 +550,7 @@ body {
   color: rgba(255, 255, 255, 0.8);
 }
 
-/* Bloque de modo (NORMAL) */
+/* Mode badge (NORMAL) */
 .sb-mode {
   background: var(--bg-mode);
   color: var(--bg-dark);
@@ -659,7 +563,7 @@ body {
   align-items: center;
 }
 
-/* Rama de git */
+/* Git branch */
 .sb-branch {
   padding: 0 10px;
   height: 100%;
@@ -670,7 +574,7 @@ body {
   gap: 4px;
 }
 
-/* Posición del cursor y encoding */
+/* Cursor position and encoding */
 .sb-pos,
 .sb-enc {
   padding: 0 10px;
@@ -681,33 +585,18 @@ body {
   font-size: 11px;
 }
 
-/* Tipo de lenguaje */
-.sl {
-  padding: 0 10px;
-  display: none;
-  align-items: center;
-}
+/* Language type badge */
+.sl { padding: 0 10px; display: none; align-items: center; }
 
-/* Nombre de archivo activo — hidden por defecto */
-.sf {
-  display: none;
-}
+/* Active filename — hidden by default, shown via :checked selector */
+.sf { display: none; }
 
-/*
-   16. TAB SWITCHING — el corazón del sistema sin JavaScript
+/* 16. TAB SWITCHING — the core of the no-JS system
+   General sibling selector (~) reaches from radio inputs into .nvim-window.
+   Each radio activates: the editor panel, the active tab, the sidebar file,
+   and the statusbar filename + language badge. */
 
-   Usando el selector general de hermanos (~) llegamos desde
-   los radio inputs hasta cualquier elemento dentro de
-   .nvim-window para activar el panel correcto.
-
-   Para cada radio se activan:
-   - El panel de editor correspondiente
-   - La pestaña (tab) activa con indicador azul
-   - El archivo en el sidebar Neotree
-   - El nombre y lenguaje en la statusbar
-*/
-
-/* ── Mostrar el panel correcto ─────────────────────────────────── */
+/* Show the correct panel */
 #r-presentation:checked ~ .nvim-window .panel-presentation,
 #r-about:checked ~ .nvim-window .panel-about,
 #r-skills:checked ~ .nvim-window .panel-skills,
@@ -715,7 +604,7 @@ body {
   display: flex; /* flex para que la terminal ocupe su lugar */
 }
 
-/* ── Tab activa: texto visible + indicador azul ─────────────────── */
+/* Active tab — full-brightness text, active background */
 #r-presentation:checked ~ .nvim-window label[for="r-presentation"].tab,
 #r-about:checked ~ .nvim-window label[for="r-about"].tab,
 #r-skills:checked ~ .nvim-window label[for="r-skills"].tab,
@@ -724,14 +613,7 @@ body {
   background: var(--bg-tab-on);
 }
 
-#r-presentation:checked ~ .nvim-window label[for="r-presentation"].tab::after,
-#r-about:checked ~ .nvim-window label[for="r-about"].tab::after,
-#r-skills:checked ~ .nvim-window label[for="r-skills"].tab::after,
-#r-contact:checked ~ .nvim-window label[for="r-contact"].tab::after {
-  background: var(--tab-marker);
-}
-
-/* ── Archivo activo en Neotree ──────────────────────────────────── */
+/* Active file in Neotree */
 #r-presentation:checked ~ .nvim-window label[for="r-presentation"].tree-file,
 #r-about:checked ~ .nvim-window label[for="r-about"].tree-file,
 #r-skills:checked ~ .nvim-window label[for="r-skills"].tree-file,
@@ -740,7 +622,7 @@ body {
   color: var(--fg);
 }
 
-/* ── Nombre y lenguaje en la statusbar ──────────────────────────── */
+/* Statusbar filename and language badge */
 #r-presentation:checked ~ .nvim-window .sf-presentation {
   display: flex;
 }
@@ -764,27 +646,18 @@ body {
   display: flex;
 }
 
-/* ── 17. ANIMACIÓN DE TERMINAL ───────────────────────────────────
-   Solo se activa cuando presentation.tsx está seleccionado.
-   Como el panel pasa de display:none a display:flex, la
-   animación se reinicia cada vez que se selecciona el buffer.
-   ────────────────────────────────────────────────────────────── */
-
-/* Deslizar la terminal hacia arriba.
-   Después de que la animación termina (forwards), se habilita resize:vertical
-   usando animation-fill-mode. El elemento queda con height=--term-h y el
-   usuario puede arrastrarlo desde el borde superior (el border-top grueso). */
+/* 17. TERMINAL ANIMATION — only fires when presentation.tsx is active.
+   Because the panel goes from display:none to display:flex, the animation
+   restarts every time the tab is selected.
+   animation-fill-mode:forwards keeps height=--term-h after it ends,
+   enabling resize:vertical so the user can drag the border to resize it. */
 #r-presentation:checked ~ .nvim-window .nvim-term {
   animation: term-open 0.28s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
   resize: vertical;
   overflow: hidden;
 }
 
-/*
-  Revelar cada línea de output con delays escalonados.
-  Los delays comienzan después de que la terminal termina de abrirse (~0.6s).
-  Cada línea tiene ~150ms de diferencia para simular la ejecución real.
-*/
+/* Staggered line reveals — delays start after the terminal finishes opening (~0.6s) */
 #r-presentation:checked ~ .nvim-window .tl-1 {
   animation: line-appear 0.15s ease 0.65s forwards;
 }
@@ -816,7 +689,7 @@ body {
   animation: line-appear 0.15s ease 1.95s forwards;
 }
 
-/* ── 18. SCROLLBAR GLOBAL ────────────────────────────────────────── */
+/* 18. SCROLLBAR */
 ::-webkit-scrollbar {
   width: 5px;
   height: 5px;
@@ -832,10 +705,7 @@ body {
   background: #3a3b55;
 }
 
-/* ── 19. RESPONSIVE ───────────────────────────────────────────────
-   En pantallas pequeñas se oculta el sidebar y se ajusta la
-   tipografía para que el contenido siga siendo legible.
-   ────────────────────────────────────────────────────────────── */
+/* 19. RESPONSIVE — hide sidebar and scale typography on small screens */
 @media (max-width: 640px) {
   :root {
     --sidebar-w: 0px;
@@ -849,9 +719,7 @@ body {
     padding: 0 6px;
     font-size: 11px;
   }
-  .tab-lang {
-    display: none;
-  } /* ocultar badge en móvil */
+  .tab-lang { display: none; } /* hide badge on mobile */
 }
 
 @media (max-width: 420px) {
